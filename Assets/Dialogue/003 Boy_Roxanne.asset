@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 655a110b2f0611940bd6d6d7f28e4495, type: 3}
+  m_Name: 003 Boy_Roxanne
+  m_EditorClassIdentifier: 
+  lines:
+  - speaker: Boy
+    text: Hi there!
+  - speaker: Boy
+    text: Can you go and make me a potion?
+  - speaker: Boy
+    text: If you go through the door behind the counter
+  - speaker: Boy
+    text: you will get to the basement and there should be a cauldron at the bottom
+  - speaker: Boy
+    text: where you can make my potion!
+  - speaker: Boy
+    text: Any potion will do
+  - speaker: Boy
+    text: After you are done with making the potion
+  - speaker: Boy
+    text: you are done with the prototype. Thanks for playing
