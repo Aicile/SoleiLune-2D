@@ -4,47 +4,73 @@ using TMPro;
 
 public class JournalManager : MonoBehaviour
 {
-    public GameObject journalUI; 
-    public TextMeshProUGUI journalText; 
-    private bool isJournalOpen = false; 
-    public float fadeInDuration = 0.5f; 
+    public static JournalManager instance; // Singleton instance
 
-    private Coroutine lastFadeCoroutine = null; 
+    public GameObject journalUI;
+    public TextMeshProUGUI journalText;
+    private bool isJournalOpen = false;
+    public float fadeInDuration = 0.5f;
+
+    public int healthPotionCount;
+    public int manaPotionCount;
+    public int energyPotionCount;
+
+    private Coroutine lastFadeCoroutine = null;
+
+    void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject); // Destroy if another instance already exists
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject); // Keep the journal manager across scenes
+        }
+    }
+
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.J))
         {
-            isJournalOpen = !isJournalOpen;
-            journalUI.SetActive(isJournalOpen);
-
-            if (isJournalOpen)
-            {
-                string entryText = "Your journal entry text here...";
-                StopAllCoroutines(); 
-                journalText.text = ""; 
-                lastFadeCoroutine = StartCoroutine(DisplayEntryWithEffects(entryText));
-            }
-            else
-            {
-                if (lastFadeCoroutine != null)
-                {
-                    StopCoroutine(lastFadeCoroutine); 
-                }
-                journalText.text = ""; 
-            }
+            ToggleJournal();
         }
     }
 
+    private void ToggleJournal()
+    {
+        isJournalOpen = !isJournalOpen;
+        journalUI.SetActive(isJournalOpen);
+
+        if (isJournalOpen)
+        {
+            // Update to show current potion counts when the journal is opened
+            UpdateJournalText();  // This will now update the text with the current potion stock
+            StopAllCoroutines();  // Stop any ongoing effects if needed
+            lastFadeCoroutine = StartCoroutine(DisplayEntryWithEffects(journalText.text));
+        }
+        else
+        {
+            if (lastFadeCoroutine != null)
+            {
+                StopCoroutine(lastFadeCoroutine);
+            }
+            journalText.text = "";
+        }
+    }
+
+
     IEnumerator DisplayEntryWithEffects(string entry)
     {
-        journalText.text = entry; 
-        byte[] alphaValues = new byte[entry.Length]; 
+        journalText.text = entry;
+        byte[] alphaValues = new byte[entry.Length];
 
         for (int i = 0; i < entry.Length; i++)
         {
             StartCoroutine(FadeInCharacter(i, alphaValues));
-            yield return new WaitForSeconds(fadeInDuration / entry.Length); 
+            yield return new WaitForSeconds(fadeInDuration / entry.Length);
         }
     }
 
@@ -83,6 +109,48 @@ public class JournalManager : MonoBehaviour
             currentCharacter++;
         }
 
-        journalText.UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32); 
+        journalText.UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32);
     }
+    // Method to update the potion stock in the journal
+    public void UpdatePotionStock(string potionType, int change)
+    {
+        switch (potionType)
+        {
+            case "Health":
+                healthPotionCount += change;
+                break;
+            case "Mana":
+                manaPotionCount += change;
+                break;
+            case "Energy":
+                energyPotionCount += change;
+                break;
+        }
+        UpdateJournalText();
+    }
+
+    // Update the journal text to reflect the current stock
+    private void UpdateJournalText()
+    {
+        journalText.text = $"Health Potions: {healthPotionCount}\nMana Potions: {manaPotionCount}\nEnergy Potions: {energyPotionCount}";
+    }
+
+    public bool CheckPotionStock(string potionType)
+    {
+        switch (potionType)
+        {
+            case "Health":
+                return healthPotionCount > 0;
+            case "Mana":
+                return manaPotionCount > 0;
+            case "Energy":
+                return energyPotionCount > 0;
+            default:
+                return false;
+        }
+    }
+
 }
+
+
+

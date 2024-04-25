@@ -77,27 +77,30 @@ public class Cauldron : MonoBehaviour, IDropHandler
     private void FinalSuccess()
     {
         ActivatePotionBasedOnIngredients();
-        
+        IngredientManager.Instance.ResetIngredients(); // Reset ingredients after crafting success
         ingredientIDs.Clear();
     }
 
-    
+
     private void ActivatePotionBasedOnIngredients()
     {
         Debug.Log($"FinalSuccess called with ingredients: {string.Join(", ", ingredientIDs)}");
 
         if (ingredientIDs.Contains(1) && ingredientIDs.Contains(2))
         {
+            JournalManager.instance.UpdatePotionStock("Health", 1);
             Debug.Log("Activating Health Potion.");
             healthPotion.SetActive(true);
         }
         else if (ingredientIDs.Contains(3) && ingredientIDs.Contains(4))
         {
+            JournalManager.instance.UpdatePotionStock("Mana", 1);
             Debug.Log("Activating Mana Potion.");
             manaPotion.SetActive(true);
         }
         else if (ingredientIDs.Contains(5) && ingredientIDs.Contains(6))
         {
+            JournalManager.instance.UpdatePotionStock("Energy", 1);
             Debug.Log("Activating Energy Potion.");
             energyPotion.SetActive(true);
         }
@@ -110,7 +113,7 @@ public class Cauldron : MonoBehaviour, IDropHandler
     private void FailCallback()
     {
         Debug.Log("Failed to craft potion. Try again.");
-        
+        IngredientManager.Instance.ResetIngredients(); // Reset ingredients after crafting failure
         ingredientIDs.Clear();
     }
 }

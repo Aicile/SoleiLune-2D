@@ -4,32 +4,41 @@ using System.Collections;
 
 public class DialogueManager : MonoBehaviour
 {
-    public TextMeshProUGUI speakerNameText; 
-    public TextMeshProUGUI dialogueText; 
-    public GameObject dialoguePanel; 
+    public static DialogueManager instance;
+
+    public TextMeshProUGUI speakerNameText;
+    public TextMeshProUGUI dialogueText;
+    public GameObject dialoguePanel;
 
     private Dialogue currentDialogue;
     private int currentLineIndex = 0;
     private bool isDialogueActive = false;
-    private bool acceptInput = false; 
-
-    
+    private bool acceptInput = false;
     public float typewriterSpeed = 0.05f;
+
+    void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
 
     void Update()
     {
         if (isDialogueActive && Input.GetKeyDown(KeyCode.E) && acceptInput)
         {
-            
             if (IsTypewriting())
             {
-                
                 StopAllCoroutines();
                 CompleteTypewriterEffect();
             }
             else
             {
-                
                 AdvanceDialogue();
             }
         }
@@ -60,28 +69,26 @@ public class DialogueManager : MonoBehaviour
     void ShowDialogueLine()
     {
         DialogueLine line = currentDialogue.lines[currentLineIndex];
-        speakerNameText.text = line.speaker; 
-        StartCoroutine(TypeSentence(line.text)); 
+        speakerNameText.text = line.speaker;
+        StartCoroutine(TypeSentence(line.text));
     }
 
     IEnumerator TypeSentence(string sentence)
     {
-        dialogueText.text = ""; 
+        dialogueText.text = "";
         foreach (char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(typewriterSpeed);
         }
-        
         acceptInput = true;
     }
 
     void CompleteTypewriterEffect()
     {
-       
         DialogueLine line = currentDialogue.lines[currentLineIndex];
-        dialogueText.text = line.text; 
-        acceptInput = true; 
+        dialogueText.text = line.text;
+        acceptInput = true;
     }
 
     bool IsTypewriting()
@@ -89,10 +96,10 @@ public class DialogueManager : MonoBehaviour
         return dialogueText.text != currentDialogue.lines[currentLineIndex].text;
     }
 
-    void EndDialogue()
+    public void EndDialogue()
     {
         dialoguePanel.SetActive(false);
         isDialogueActive = false;
-        acceptInput = false; 
+        acceptInput = false;
     }
 }
