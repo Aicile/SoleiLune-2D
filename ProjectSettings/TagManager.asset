@@ -6,6 +6,7 @@ TagManager:
   tags:
   - TimeDisplay
   - DayDisplay
+  - Boundary
   layers:
   - Default
   - TransparentFX

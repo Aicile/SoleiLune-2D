@@ -39,26 +39,35 @@ public class DialogueManager : MonoBehaviour
             }
             else
             {
-                AdvanceDialogue();
+                // Assume you have a way to determine the potion type needed here
+                string potionType = GetCurrentPotionType();
+                AdvanceDialogue(potionType);
             }
         }
     }
 
-    public void StartDialogue(Dialogue dialogue)
+    // Method to determine the potion type dynamically
+    private string GetCurrentPotionType()
+    {
+        // Implementation depends on how potion types are tracked in your game
+        return "Health";  // Example placeholder
+    }
+
+    public void StartDialogue(Dialogue dialogue, string potionType = "")
     {
         currentDialogue = dialogue;
         currentLineIndex = 0;
         isDialogueActive = true;
         dialoguePanel.SetActive(true);
-        ShowDialogueLine();
+        ShowDialogueLine(potionType);  // Ensure the potion type is passed here.
     }
 
-    void AdvanceDialogue()
+    public void AdvanceDialogue(string potionType = "")
     {
         currentLineIndex++;
         if (currentLineIndex < currentDialogue.lines.Length)
         {
-            ShowDialogueLine();
+            ShowDialogueLine(potionType);
         }
         else
         {
@@ -66,11 +75,14 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    void ShowDialogueLine()
+
+
+    void ShowDialogueLine(string potionType)
     {
         DialogueLine line = currentDialogue.lines[currentLineIndex];
         speakerNameText.text = line.speaker;
-        StartCoroutine(TypeSentence(line.text));
+        string formattedText = line.text.Replace("{potion}", potionType); // Replace placeholder with potion type
+        StartCoroutine(TypeSentence(formattedText));
     }
 
     IEnumerator TypeSentence(string sentence)

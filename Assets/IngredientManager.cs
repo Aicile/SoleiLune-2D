@@ -6,8 +6,8 @@ public class IngredientManager : MonoBehaviour
     public static IngredientManager Instance; // Singleton instance for global access
 
     public GameObject[] ingredientPrefabs; // Prefabs of the ingredients
-    public Transform spawnPoint;           // Point where ingredients should spawn or reset to
-    private List<GameObject> activeIngredients = new List<GameObject>();
+    private List<GameObject> activeIngredients = new List<GameObject>(); // Active ingredients in the scene
+    private Dictionary<GameObject, Vector3> originalPositions = new Dictionary<GameObject, Vector3>(); // Original positions of ingredients
 
     void Awake()
     {
@@ -32,18 +32,37 @@ public class IngredientManager : MonoBehaviour
     {
         foreach (var prefab in ingredientPrefabs)
         {
-            var ingredient = Instantiate(prefab, spawnPoint.position, Quaternion.identity, transform);
-            activeIngredients.Add(ingredient);
+            if (prefab != null)
+            {
+                var ingredient = Instantiate(prefab, transform);
+                if (ingredient != null)
+                {
+                    activeIngredients.Add(ingredient);
+                    originalPositions[ingredient] = ingredient.transform.position;
+                }
+                else
+                {
+                    Debug.LogError("Failed to instantiate ingredient prefab.");
+                }
+            }
+            else
+            {
+                Debug.LogError("Ingredient prefab is null.");
+            }
         }
     }
 
-    // Method to reset ingredients back to original position
+
+    // Method to reset ingredients back to their original position
     public void ResetIngredients()
     {
         foreach (var ingredient in activeIngredients)
         {
-            ingredient.transform.position = spawnPoint.position; // Resets the position
-            ingredient.SetActive(true);  // Reactivates the ingredient in case it was deactivated
+            if (originalPositions.ContainsKey(ingredient))
+            {
+                ingredient.transform.position = originalPositions[ingredient]; // Reset to the original position
+                ingredient.SetActive(true);  // Reactivate the ingredient in case it was deactivated
+            }
         }
     }
 }

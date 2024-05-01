@@ -86,29 +86,57 @@ public class Cauldron : MonoBehaviour, IDropHandler
     {
         Debug.Log($"FinalSuccess called with ingredients: {string.Join(", ", ingredientIDs)}");
 
+        // Check for health potion combination
         if (ingredientIDs.Contains(1) && ingredientIDs.Contains(2))
         {
-            JournalManager.instance.UpdatePotionStock("Health", 1);
-            Debug.Log("Activating Health Potion.");
-            healthPotion.SetActive(true);
+            if (healthPotion != null)
+            {
+                JournalManager.instance.UpdatePotionStock("Health", 1);
+                healthPotion.SetActive(true);
+            }
+            else
+            {
+                Debug.LogError("Health potion GameObject is not assigned in the inspector.");
+            }
         }
-        else if (ingredientIDs.Contains(3) && ingredientIDs.Contains(4))
+
+        // Check for mana potion combination
+        if (ingredientIDs.Contains(3) && ingredientIDs.Contains(4))
         {
-            JournalManager.instance.UpdatePotionStock("Mana", 1);
-            Debug.Log("Activating Mana Potion.");
-            manaPotion.SetActive(true);
+            if (manaPotion != null)
+            {
+                JournalManager.instance.UpdatePotionStock("Mana", 1);
+                manaPotion.SetActive(true);
+            }
+            else
+            {
+                Debug.LogError("Mana potion GameObject is not assigned in the inspector.");
+            }
         }
-        else if (ingredientIDs.Contains(5) && ingredientIDs.Contains(6))
+
+        // Check for energy potion combination
+        if (ingredientIDs.Contains(5) && ingredientIDs.Contains(6))
         {
-            JournalManager.instance.UpdatePotionStock("Energy", 1);
-            Debug.Log("Activating Energy Potion.");
-            energyPotion.SetActive(true);
+            if (energyPotion != null)
+            {
+                JournalManager.instance.UpdatePotionStock("Energy", 1);
+                energyPotion.SetActive(true);
+            }
+            else
+            {
+                Debug.LogError("Energy potion GameObject is not assigned in the inspector.");
+            }
         }
-        else
+
+        // Log if no matching combination is found
+        if (!ingredientIDs.Contains(1) && !ingredientIDs.Contains(2) &&
+            !ingredientIDs.Contains(3) && !ingredientIDs.Contains(4) &&
+            !ingredientIDs.Contains(5) && !ingredientIDs.Contains(6))
         {
             Debug.Log("No matching potion for the ingredient combination.");
         }
     }
+
 
     private void FailCallback()
     {

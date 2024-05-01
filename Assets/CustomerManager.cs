@@ -12,32 +12,21 @@ public class CustomerManager : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(SpawnCustomer());
-    }
-
-    IEnumerator SpawnCustomer()
-    {
-        while (true)
+        // Start with filling the cafe initially
+        for (int i = 0; i < queuePositions.Count; i++)
         {
-            yield return new WaitForSeconds(spawnRate);
-            if (customers.Count < queuePositions.Count)
-            {
-                Spawn();
-            }
+            Spawn();
         }
     }
 
     void Spawn()
     {
-        if (queuePositions.Count > customers.Count)
+        if (customers.Count < queuePositions.Count)
         {
             // Instantiate customer at the door position
             GameObject customerObj = Instantiate(customerPrefab, doorPosition.position, Quaternion.identity);
             Customer customer = customerObj.GetComponent<Customer>();
-            if (queuePositions.Count > 0)
-            {
-                customer.targetPosition = queuePositions[customers.Count]; // Set the queue target position
-            }
+            customer.targetPosition = queuePositions[customers.Count]; // Set the initial target position
             customers.Add(customer);
             Debug.Log("New customer spawned at the door and moving to queue.");
         }
@@ -45,17 +34,19 @@ public class CustomerManager : MonoBehaviour
 
     public void CustomerServed(Customer customer)
     {
-        customers.Remove(customer);
-        Destroy(customer.gameObject);
-        // Update queue positions for remaining customers
-        for (int i = 0; i < customers.Count; i++)
+        int index = customers.IndexOf(customer);
+        if (index != -1)
         {
-            if (i < queuePositions.Count)
+            customers.RemoveAt(index);
+            Destroy(customer.gameObject);
+            // Update queue positions for remaining customers
+            for (int i = index; i < customers.Count; i++)
             {
                 customers[i].targetPosition = queuePositions[i];
             }
         }
+
+        // After serving one customer, spawn another if the queue is not full
+        Spawn();
     }
-
-
 }

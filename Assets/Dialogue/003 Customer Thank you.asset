@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lines:
   - speaker: Customer
-    text: 'Hmmm, you are out of '
+    text: Thank you for the Energy potion.

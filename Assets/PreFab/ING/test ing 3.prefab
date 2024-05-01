@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7737320443319619931}
   - component: {fileID: 7482675568345710046}
   - component: {fileID: 4353348409521735759}
+  - component: {fileID: 4009119814239342252}
   m_Layer: 5
   m_Name: test ing 3
   m_TagString: Untagged
@@ -91,6 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ingredientID: 3
+  startPosition: {x: 0, y: 0, z: 0}
   originalParent: {fileID: 0}
 --- !u!225 &7482675568345710046
 CanvasGroup:
@@ -149,3 +151,30 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 100.13223, y: 100.13223}
   m_EdgeRadius: 0
+--- !u!50 &4009119814239342252
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7832967285565309604}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

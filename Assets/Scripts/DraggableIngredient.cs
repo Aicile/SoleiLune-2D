@@ -1,34 +1,99 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class DraggableIngredient : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    public int ingredientID; 
+    public int ingredientID;
     private CanvasGroup canvasGroup;
     private RectTransform rectTransform;
-    public Transform originalParent;
+    private Vector2 startPosition;
+    private Vector2 dragStartPosition;
+    private Vector2 velocity;
+    private bool isDragging = false;
+    private Transform canvasTransform; // To store the canvas transform
+
+    private float friction = 0.95f; // Friction coefficient
 
     private void Awake()
     {
-        rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
-        originalParent = transform.parent;
+        if (canvasGroup == null)
+        {
+            Debug.LogError("Missing CanvasGroup component on " + gameObject.name);
+        }
+
+        rectTransform = GetComponent<RectTransform>();
+        if (rectTransform == null)
+        {
+            Debug.LogError("Missing RectTransform component on " + gameObject.name);
+        }
+
+        canvasTransform = GetComponentInParent<Canvas>().transform; // Ensure the Canvas is the parent
+        if (canvasTransform == null)
+        {
+            Debug.LogError("DraggableIngredient must be a child of a Canvas.");
+        }
+
+        startPosition = rectTransform.anchoredPosition;
     }
+
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         canvasGroup.blocksRaycasts = false;
-        transform.SetParent(transform.root); 
+        dragStartPosition = rectTransform.anchoredPosition;
+        isDragging = true;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        rectTransform.anchoredPosition += eventData.delta / FindObjectOfType<Canvas>().scaleFactor; 
+        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasTransform as RectTransform, eventData.position, eventData.pressEventCamera, out var localPoint))
+        {
+            rectTransform.anchoredPosition = localPoint;
+            velocity = (localPoint - dragStartPosition) / Time.deltaTime;
+            dragStartPosition = localPoint;
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         canvasGroup.blocksRaycasts = true;
-        transform.SetParent(originalParent); 
+        isDragging = false;
+        StartCoroutine(ApplyPhysics());
+    }
+
+    private IEnumerator ApplyPhysics()
+    {
+        while (!isDragging && velocity.magnitude > 0.01f)
+        {
+            rectTransform.anchoredPosition += velocity * Time.deltaTime;
+            velocity *= friction;
+            yield return null;
+        }
+    }
+
+    private void Update()
+    {
+        if (!isDragging)
+        {
+            if (!IsWithinCanvas(rectTransform.anchoredPosition))
+            {
+                ResetPosition();
+            }
+        }
+    }
+
+    private bool IsWithinCanvas(Vector2 position)
+    {
+        var canvasRect = (canvasTransform as RectTransform).rect;
+        return canvasRect.Contains(position);
+    }
+
+    private void ResetPosition()
+    {
+        rectTransform.anchoredPosition = startPosition;
+        velocity = Vector2.zero;
     }
 }
