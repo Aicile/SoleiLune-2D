@@ -1,79 +1,88 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System; // For Action
+using System;
 
 public class TimingMinigameTwo : MonoBehaviour
 {
-    public Slider timingSlider; // Assign in the inspector, represents the moving marker
-    public RectTransform successZone; // Assign in the inspector, represents the area for a successful hit
-    public int requiredSuccesses = 3; // The number of successful hits required to complete the minigame
-    private int currentSuccesses = 0; // Current count of successful hits
+    public Slider timingSlider;
+    public RectTransform successZone; // This is the UI element that visually represents the success zone
+    public int requiredSuccesses = 3;
+    private int currentSuccesses = 0;
 
-    public float markerSpeed = 2.0f; // Speed at which the marker moves
-    private bool isMarkerMovingRight = true; // Direction of the marker movement
+    public float markerSpeed = 2.0f; // Speed at which the slider handle moves
+    private bool isMarkerMovingRight = true; // Direction control for the slider handle movement
 
-    private Action onMinigameSuccess; // Callback for when the minigame is successfully completed
-    private Action onMinigameFail; // Callback for when the player fails the minigame
+    private Action onMinigameSuccess; // Callback for successful minigame completion
+    private Action onMinigameFail; // Callback for minigame failure
 
-    // Start or reset the minigame
     public void StartMinigame(Action onSuccess, Action onFail)
     {
         gameObject.SetActive(true);
-        timingSlider.gameObject.SetActive(true); // Enable the minigame UI
-        timingSlider.value = 0; // Start at the beginning of the slider
-        currentSuccesses = 0; // Reset the success count
+        timingSlider.gameObject.SetActive(true);
+        timingSlider.value = 0;
+        currentSuccesses = 0;
         onMinigameSuccess = onSuccess;
         onMinigameFail = onFail;
+        MoveSuccessZone(); // Set the initial position for the success zone
     }
 
     void Update()
     {
-        // Move the marker back and forth within the bounds of the slider
-        if (isMarkerMovingRight)
-        {
-            timingSlider.value += Time.deltaTime * markerSpeed;
-            if (timingSlider.value >= timingSlider.maxValue)
-            {
-                isMarkerMovingRight = false;
-            }
-        }
-        else
-        {
-            timingSlider.value -= Time.deltaTime * markerSpeed;
-            if (timingSlider.value <= timingSlider.minValue)
-            {
-                isMarkerMovingRight = true;
-            }
-        }
-
-        // Check for player input
-        if (Input.GetKeyDown(KeyCode.Space)) // Use space bar or any key you prefer
+        MoveMarker();
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             CheckForSuccess();
         }
     }
 
-    // Check if the marker is within the success zone
+    private void MoveMarker()
+    {
+        float valueChange = Time.deltaTime * markerSpeed;
+        if (isMarkerMovingRight)
+        {
+            timingSlider.value += valueChange;
+            if (timingSlider.value >= timingSlider.maxValue)
+                isMarkerMovingRight = false;
+        }
+        else
+        {
+            timingSlider.value -= valueChange;
+            if (timingSlider.value <= timingSlider.minValue)
+                isMarkerMovingRight = true;
+        }
+    }
+
     private void CheckForSuccess()
     {
-        // Check the slider's fill area rather than the whole slider range
-        var sliderFillArea = timingSlider.fillRect;
-        var sliderValue = timingSlider.value / timingSlider.maxValue; // Normalize the value to be between 0 and 1
+        float handlePosition = timingSlider.value / timingSlider.maxValue;
+        float successStart = successZone.anchorMin.x;
+        float successEnd = successZone.anchorMax.x;
 
-        if (sliderValue >= sliderFillArea.anchorMin.x && sliderValue <= sliderFillArea.anchorMax.x)
+        if (handlePosition >= successStart && handlePosition <= successEnd)
         {
             currentSuccesses++;
-            if (currentSuccesses >= requiredSuccesses)
+            if (currentSuccesses < requiredSuccesses)
+            {
+                MoveSuccessZone();
+            }
+            else
             {
                 onMinigameSuccess?.Invoke();
-                gameObject.SetActive(false); // Hide the minigame UI
+                gameObject.SetActive(false);
             }
         }
         else
         {
             onMinigameFail?.Invoke();
-            gameObject.SetActive(false); // Hide the minigame UI
+            gameObject.SetActive(false);
         }
     }
 
+    private void MoveSuccessZone()
+    {
+        float newPosition = UnityEngine.Random.Range(0.1f, 0.9f); // New position within the slider
+        float zoneWidth = 0.2f; // Width of the success zone as a percentage of the slider's width
+        successZone.anchorMin = new Vector2(newPosition - zoneWidth / 2, 0);
+        successZone.anchorMax = new Vector2(newPosition + zoneWidth / 2, 1);
+    }
 }
