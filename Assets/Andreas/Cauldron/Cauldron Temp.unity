@@ -1269,6 +1269,7 @@ GameObject:
   - component: {fileID: 1681615491}
   - component: {fileID: 1681615493}
   - component: {fileID: 1681615492}
+  - component: {fileID: 1681615494}
   m_Layer: 5
   m_Name: Lune
   m_TagString: Untagged
@@ -1315,7 +1316,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 49f96bb90734cb043978b853ef96a3f4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 284563f6b58c6874aafd39fb0de35c00, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1333,6 +1334,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1681615490}
   m_CullTransparentMesh: 1
+--- !u!114 &1681615494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681615490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a48a1e3c31bf264c8e5e7a70e319822, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Image: {fileID: 1681615492}
+  m_SpriteArray:
+  - {fileID: 21300000, guid: 7baf9c5c0fdc1de4c871768c055b6d06, type: 3}
+  - {fileID: 21300000, guid: 0206fee157ccaf447a9358de80081bb2, type: 3}
+  - {fileID: 21300000, guid: a1529218df41d2141ae1660642f7176c, type: 3}
+  - {fileID: 21300000, guid: fc8b357e97e60d948813f2b7b2d0d9c1, type: 3}
+  - {fileID: 21300000, guid: 5d8fcac1da4d226428ae9f76ebe96db3, type: 3}
+  - {fileID: 21300000, guid: f33c7d621679b1342928e1675e37d4c8, type: 3}
+  - {fileID: 21300000, guid: 39243586d473487499df7349e7e8ae4b, type: 3}
+  - {fileID: 21300000, guid: dca177670d7ee1f4b82ef78988627494, type: 3}
+  - {fileID: 21300000, guid: bc37577e55099d747b7e92040bb21575, type: 3}
+  - {fileID: 21300000, guid: 79c723675b8758f4f8afaf551a8a6bf5, type: 3}
+  - {fileID: 21300000, guid: 79e42d18e61508b479211ac96aacb274, type: 3}
+  - {fileID: 21300000, guid: 5530c3c725d630f4283cd750c48a6beb, type: 3}
+  - {fileID: 21300000, guid: 9aff0bad2f320cf4b976d093722c60ff, type: 3}
+  - {fileID: 21300000, guid: a5781ecd884583f4d8c52a0d4aae0185, type: 3}
+  - {fileID: 21300000, guid: 301f59a39a987f545ae6b8029cfd8b2c, type: 3}
+  m_Speed: 0.15
 --- !u!1 &1702500182
 GameObject:
   m_ObjectHideFlags: 0
