@@ -7,27 +7,69 @@ public class Customer : MonoBehaviour
     public Dialogue thankYouDialogue;
     public Dialogue outOfStockDialogue;
     public string potionNeeded;
-    public Transform targetPosition;
+    public Transform targetPosition; // This will be the chair position
+    public GameObject thoughtBubble; // Attach this in the prefab directly
 
-    private bool hasInteracted = false;  // Tracks if the player has already interacted
-    private bool playerInRange = false;  // Tracks if the player is within interaction range
+    public GameObject healthPotionObject;  // Assign in the editor
+    public GameObject manaPotionObject;    // Assign in the editor
+    public GameObject energyPotionObject;  // Assign in the editor
+
+    private bool hasInteracted = false;
+    private bool playerInRange = false;
 
     void Awake()
     {
         AssignRandomPotionNeed();
+        thoughtBubble.SetActive(false); // Ensure it's hidden on start
+        UpdatePotionDisplay();
     }
 
     void Update()
     {
-        if (targetPosition != null)
+        MoveToTarget();
+        CheckForInteraction();
+    }
+
+    private void MoveToTarget()
+    {
+        if (targetPosition != null && !hasInteracted)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPosition.position, Time.deltaTime * 1);
+            if (Vector3.Distance(transform.position, targetPosition.position) < 0.1f)
+            {
+                thoughtBubble.SetActive(true);  // Show thought bubble when at the chair
+                UpdatePotionDisplay();  // Update potion display when they sit down
+            }
         }
+    }
 
-        // Check for player input when in range and not interacted
+    private void UpdatePotionDisplay()
+    {
+        // Disable all potions first
+        healthPotionObject.SetActive(false);
+        manaPotionObject.SetActive(false);
+        energyPotionObject.SetActive(false);
+
+        // Enable the correct potion based on the need
+        switch (potionNeeded)
+        {
+            case "Health":
+                healthPotionObject.SetActive(true);
+                break;
+            case "Mana":
+                manaPotionObject.SetActive(true);
+                break;
+            case "Energy":
+                energyPotionObject.SetActive(true);
+                break;
+        }
+    }
+
+private void CheckForInteraction()
+    {
         if (playerInRange && Input.GetKeyDown(KeyCode.E) && !hasInteracted)
         {
-            hasInteracted = true;  // Prevent further interaction until reset
+            hasInteracted = true;
             InitiateInteraction();
         }
     }
@@ -36,7 +78,7 @@ public class Customer : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            playerInRange = true;  // Player enters the trigger zone
+            playerInRange = true;
         }
     }
 
@@ -46,22 +88,21 @@ public class Customer : MonoBehaviour
         {
             playerInRange = false;
             DialogueManager.instance.EndDialogue();
-            hasInteracted = false;  // Reset interaction flag when player leaves
+            hasInteracted = false;
+            thoughtBubble.SetActive(false);
         }
     }
 
     void InitiateInteraction()
     {
-        requestDialogue.lines[0].text = $"I want a {potionNeeded} potion.";  // Dynamic request based on potion type
+        requestDialogue.lines[0].text = $"I want a {potionNeeded} potion.";
         DialogueManager.instance.StartDialogue(requestDialogue, potionNeeded);
-
         StartCoroutine(HandlePotionRequestAfterDialogue());
     }
 
     IEnumerator HandlePotionRequestAfterDialogue()
     {
-        yield return new WaitForSeconds(2);  // Wait for request dialogue to be read
-
+        yield return new WaitForSeconds(2);
         if (JournalManager.instance.CheckPotionStock(potionNeeded))
         {
             CompleteTransaction();
@@ -78,16 +119,15 @@ public class Customer : MonoBehaviour
         JournalManager.instance.UpdatePotionStock(potionNeeded, -1);
         thankYouDialogue.lines[0].text = $"Thank you for the {potionNeeded} potion.";
         DialogueManager.instance.StartDialogue(thankYouDialogue, potionNeeded);
-        StartCoroutine(LeaveCafe());  // Customer leaves after transaction
+        StartCoroutine(LeaveCafe());
     }
 
     IEnumerator LeaveCafe()
     {
-        yield return new WaitForSeconds(2);  // Wait for 2 seconds after dialogue
-        FindObjectOfType<CustomerManager>().CustomerServed(this);  // Notify the manager that this customer is served
-        gameObject.SetActive(false);  // Deactivate or you could add an animation for leaving
+        yield return new WaitForSeconds(2);
+        FindObjectOfType<CustomerManager>().CustomerServed(this);
+        gameObject.SetActive(false);
     }
-
 
     private void AssignRandomPotionNeed()
     {

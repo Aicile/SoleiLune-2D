@@ -6,30 +6,56 @@ public class CustomerManager : MonoBehaviour
 {
     public GameObject customerPrefab;
     public Transform doorPosition; // Assign this in the Unity Editor to the position of the door
-    public List<Transform> queuePositions = new List<Transform>();
+    public List<Transform> chairPositions = new List<Transform>(); // Adjusted naming for clarity
     public float spawnRate = 5f;
     private List<Customer> customers = new List<Customer>();
 
     void Start()
     {
-        // Start with filling the cafe initially
-        for (int i = 0; i < queuePositions.Count; i++)
+        StartCoroutine(SpawnCustomers());
+    }
+
+    IEnumerator SpawnCustomers()
+    {
+        while (true)
         {
-            Spawn();
+            yield return new WaitForSeconds(spawnRate);
+            if (customers.Count < chairPositions.Count)
+            {
+                Spawn();
+            }
         }
     }
 
     void Spawn()
     {
-        if (customers.Count < queuePositions.Count)
+        if (customers.Count < chairPositions.Count)
         {
-            // Instantiate customer at the door position
             GameObject customerObj = Instantiate(customerPrefab, doorPosition.position, Quaternion.identity);
             Customer customer = customerObj.GetComponent<Customer>();
-            customer.targetPosition = queuePositions[customers.Count]; // Set the initial target position
-            customers.Add(customer);
-            Debug.Log("New customer spawned at the door and moving to queue.");
+            if (customer != null)
+            {
+                customer.enabled = true;  // Make sure the script is enabled
+            }
+            int chairIndex = FindAvailableChair();
+            if (chairIndex != -1)
+            {
+                customer.targetPosition = chairPositions[chairIndex]; // Set the target position as a chair
+                customers.Add(customer);
+                Debug.Log("New customer spawned at the door and moving to a chair.");
+            }
         }
+    }
+
+
+    int FindAvailableChair()
+    {
+        for (int i = 0; i < chairPositions.Count; i++)
+        {
+            if (!customers.Exists(c => c.targetPosition == chairPositions[i]))
+                return i;
+        }
+        return -1; // No available chair
     }
 
     public void CustomerServed(Customer customer)
@@ -38,15 +64,8 @@ public class CustomerManager : MonoBehaviour
         if (index != -1)
         {
             customers.RemoveAt(index);
-            Destroy(customer.gameObject);
-            // Update queue positions for remaining customers
-            for (int i = index; i < customers.Count; i++)
-            {
-                customers[i].targetPosition = queuePositions[i];
-            }
+            Debug.Log("Customer leaving the cafe and chair becoming available.");
         }
-
-        // After serving one customer, spawn another if the queue is not full
-        Spawn();
+        Destroy(customer.gameObject);
     }
 }
