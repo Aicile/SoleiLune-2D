@@ -26,9 +26,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/001Scenes/Old Scenes/Cutscene CafeScene.unity
     guid: b6a9f936dff6eb04ba282c23d8808534
-  - enabled: 1
+  - enabled: 0
     path: Assets/001Scenes/TownArea.unity
     guid: ca2b500df7fbe8647a55e774584e531c
+  - enabled: 1
+    path: Assets/001Scenes/Felicia's_TownSqure.unity
+    guid: d272bcbe12425cd4fbf991f1c5a25ffc
   - enabled: 1
     path: Assets/001Scenes/GardenScene.unity
     guid: 978a8017cdddc7a46ad746084f5b7d43

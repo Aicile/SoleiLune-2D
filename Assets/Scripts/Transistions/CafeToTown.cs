@@ -39,6 +39,6 @@ public class CafeToTown : MonoBehaviour
 
         Debug.Log("Go to Town Area");
        
-        SceneManager.LoadScene("TownArea");
+        SceneManager.LoadScene("Felicia's_TownSqure");
     }
 }
