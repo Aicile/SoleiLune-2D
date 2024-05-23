@@ -39,6 +39,12 @@ EditorBuildSettings:
     path: Assets/001Scenes/BedroomScene.unity
     guid: 56230bee44abbde4f996d41732f2dedf
   - enabled: 1
+    path: Assets/001Scenes/Felicia's_WoodWoods.unity
+    guid: af0b96e871247624eb4984dfecc02a5f
+  - enabled: 1
     path: Assets/001Scenes/WoodScene.unity
     guid: e7a6dd2b45edc5a4aab13567ecdeb726
+  - enabled: 1
+    path: Assets/001Scenes/StockScene.unity
+    guid: 2067ce65e9d676b4c8d8508d45804ee4
   m_configObjects: {}

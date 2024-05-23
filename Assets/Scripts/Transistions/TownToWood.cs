@@ -38,6 +38,6 @@ public class TownToWood : MonoBehaviour
 
         print("Go to Wood");
         
-        SceneManager.LoadScene("WoodScene");
+        SceneManager.LoadScene("Felicia's_WoodWoods");
     }
 }
