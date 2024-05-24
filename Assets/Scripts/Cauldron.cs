@@ -21,7 +21,6 @@ public class Cauldron : MonoBehaviour, IDropHandler
             Debug.Log("Ingredient with ID " + draggableIngredient.ingredientID + " was dropped into the cauldron.");
             ingredientIDs.Add(draggableIngredient.ingredientID);
 
-           
             if (ingredientIDs.Count == 2)
             {
                 CraftPotion();
@@ -31,14 +30,47 @@ public class Cauldron : MonoBehaviour, IDropHandler
 
     private void CraftPotion()
     {
-        
         ingredientIDs.Sort();
 
-        
-        StartMinigamesBasedOnIngredients();
+        if (CheckIngredients())
+        {
+            StartMinigamesBasedOnIngredients();
+        }
+        else
+        {
+            Debug.Log("Not enough ingredients to craft the potion.");
+            ingredientIDs.Clear();
+        }
     }
 
-    
+    private bool CheckIngredients()
+    {
+        // Check for the required ingredients in the JournalManager
+        foreach (int id in ingredientIDs)
+        {
+            string ingredientName = GetIngredientName(id);
+            if (!JournalManager.instance.CheckIngredientStock(ingredientName))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private string GetIngredientName(int id)
+    {
+        switch (id)
+        {
+            case 1: return "Coffee Bean";
+            case 2: return "Rose";
+            case 3: return "Lilac";
+            case 4: return "Lavender";
+            case 5: return "Crimson Lycoris";
+            case 6: return "Red Bean";
+            default: return "";
+        }
+    }
+
     private void StartMinigamesBasedOnIngredients()
     {
         ClearMinigames();
@@ -57,7 +89,6 @@ public class Cauldron : MonoBehaviour, IDropHandler
         else
         {
             Debug.Log("Incorrect ingredients. No potion crafted.");
-            
             ingredientIDs.Clear();
         }
     }
@@ -81,18 +112,17 @@ public class Cauldron : MonoBehaviour, IDropHandler
         ingredientIDs.Clear();
     }
 
-
     private void ActivatePotionBasedOnIngredients()
     {
         Debug.Log($"FinalSuccess called with ingredients: {string.Join(", ", ingredientIDs)}");
 
-        // Check for health potion combination
         if (ingredientIDs.Contains(1) && ingredientIDs.Contains(2))
         {
             if (healthPotion != null)
             {
                 JournalManager.instance.UpdatePotionStock("Health", 1);
                 healthPotion.SetActive(true);
+                UseIngredients();
             }
             else
             {
@@ -100,13 +130,13 @@ public class Cauldron : MonoBehaviour, IDropHandler
             }
         }
 
-        // Check for mana potion combination
         if (ingredientIDs.Contains(3) && ingredientIDs.Contains(4))
         {
             if (manaPotion != null)
             {
                 JournalManager.instance.UpdatePotionStock("Mana", 1);
                 manaPotion.SetActive(true);
+                UseIngredients();
             }
             else
             {
@@ -114,13 +144,13 @@ public class Cauldron : MonoBehaviour, IDropHandler
             }
         }
 
-        // Check for energy potion combination
         if (ingredientIDs.Contains(5) && ingredientIDs.Contains(6))
         {
             if (energyPotion != null)
             {
                 JournalManager.instance.UpdatePotionStock("Energy", 1);
                 energyPotion.SetActive(true);
+                UseIngredients();
             }
             else
             {
@@ -128,7 +158,6 @@ public class Cauldron : MonoBehaviour, IDropHandler
             }
         }
 
-        // Log if no matching combination is found
         if (!ingredientIDs.Contains(1) && !ingredientIDs.Contains(2) &&
             !ingredientIDs.Contains(3) && !ingredientIDs.Contains(4) &&
             !ingredientIDs.Contains(5) && !ingredientIDs.Contains(6))
@@ -137,6 +166,14 @@ public class Cauldron : MonoBehaviour, IDropHandler
         }
     }
 
+    private void UseIngredients()
+    {
+        foreach (int id in ingredientIDs)
+        {
+            string ingredientName = GetIngredientName(id);
+            JournalManager.instance.UpdateIngredientStock(ingredientName, -1);
+        }
+    }
 
     private void FailCallback()
     {

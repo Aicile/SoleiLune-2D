@@ -30,15 +30,18 @@ public class DraggableIngredient : MonoBehaviour, IBeginDragHandler, IDragHandle
             Debug.LogError("Missing RectTransform component on " + gameObject.name);
         }
 
-        canvasTransform = GetComponentInParent<Canvas>().transform; // Ensure the Canvas is the parent
-        if (canvasTransform == null)
+        Canvas canvas = GetComponentInParent<Canvas>();
+        if (canvas != null)
+        {
+            canvasTransform = canvas.transform; // Ensure the Canvas is the parent
+        }
+        else
         {
             Debug.LogError("DraggableIngredient must be a child of a Canvas.");
         }
 
         startPosition = rectTransform.anchoredPosition;
     }
-
 
     public void OnBeginDrag(PointerEventData eventData)
     {

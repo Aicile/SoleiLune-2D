@@ -7,13 +7,23 @@ public class JournalManager : MonoBehaviour
     public static JournalManager instance; // Singleton instance
 
     public GameObject journalUI;
-    public TextMeshProUGUI journalText;
+    public Canvas journalCanvas; // Reference to the Journal Canvas
+    public TextMeshProUGUI potionJournalText;
+    public TextMeshProUGUI ingredientJournalText;
     private bool isJournalOpen = false;
     public float fadeInDuration = 0.5f;
 
     public int healthPotionCount;
     public int manaPotionCount;
     public int energyPotionCount;
+
+    // Ingredient counts
+    public int coffeeBeanCount;
+    public int roseCount;
+    public int lilacCount;
+    public int lavenderCount;
+    public int crimsonLycorisCount;
+    public int redBeanCount;
 
     private Coroutine lastFadeCoroutine = null;
 
@@ -30,6 +40,10 @@ public class JournalManager : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        UpdateJournalText(); // Ensure journal text is updated on start
+    }
 
     void Update()
     {
@@ -46,10 +60,11 @@ public class JournalManager : MonoBehaviour
 
         if (isJournalOpen)
         {
-            // Update to show current potion counts when the journal is opened
-            UpdateJournalText();  // This will now update the text with the current potion stock
+            // Update to show current potion and ingredient counts when the journal is opened
+            UpdateJournalText();  // This will now update the text with the current potion and ingredient stock
             StopAllCoroutines();  // Stop any ongoing effects if needed
-            lastFadeCoroutine = StartCoroutine(DisplayEntryWithEffects(journalText.text));
+            lastFadeCoroutine = StartCoroutine(DisplayEntryWithEffects(potionJournalText.text, ingredientJournalText.text));
+            SetCanvasSortingOrder(1000); // Set a high sorting order when the journal is opened
         }
         else
         {
@@ -57,37 +72,45 @@ public class JournalManager : MonoBehaviour
             {
                 StopCoroutine(lastFadeCoroutine);
             }
-            journalText.text = "";
+            potionJournalText.text = "";
+            ingredientJournalText.text = "";
+            SetCanvasSortingOrder(0); // Reset sorting order when the journal is closed
         }
     }
 
-
-    IEnumerator DisplayEntryWithEffects(string entry)
+    IEnumerator DisplayEntryWithEffects(string potionEntry, string ingredientEntry)
     {
-        journalText.text = entry;
-        byte[] alphaValues = new byte[entry.Length];
+        potionJournalText.text = potionEntry;
+        ingredientJournalText.text = ingredientEntry;
+        byte[] alphaValues = new byte[potionEntry.Length];
+        byte[] alphaValuesIngredients = new byte[ingredientEntry.Length];
 
-        for (int i = 0; i < entry.Length; i++)
+        for (int i = 0; i < potionEntry.Length; i++)
         {
-            StartCoroutine(FadeInCharacter(i, alphaValues));
-            yield return new WaitForSeconds(fadeInDuration / entry.Length);
+            StartCoroutine(FadeInCharacter(i, alphaValues, potionJournalText));
+            yield return new WaitForSeconds(fadeInDuration / potionEntry.Length);
+        }
+        for (int i = 0; i < ingredientEntry.Length; i++)
+        {
+            StartCoroutine(FadeInCharacter(i, alphaValuesIngredients, ingredientJournalText));
+            yield return new WaitForSeconds(fadeInDuration / ingredientEntry.Length);
         }
     }
 
-    IEnumerator FadeInCharacter(int index, byte[] alphaValues)
+    IEnumerator FadeInCharacter(int index, byte[] alphaValues, TextMeshProUGUI journalText)
     {
         float elapsedTime = 0f;
         while (elapsedTime < fadeInDuration)
         {
             float alpha = Mathf.Clamp01(elapsedTime / fadeInDuration);
             alphaValues[index] = (byte)(alpha * 255);
-            ApplyAlphaToText(alphaValues);
+            ApplyAlphaToText(alphaValues, journalText);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
     }
 
-    private void ApplyAlphaToText(byte[] alphaValues)
+    private void ApplyAlphaToText(byte[] alphaValues, TextMeshProUGUI journalText)
     {
         TMP_TextInfo textInfo = journalText.textInfo;
         Color32[] newVertexColors;
@@ -111,6 +134,7 @@ public class JournalManager : MonoBehaviour
 
         journalText.UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32);
     }
+
     // Method to update the potion stock in the journal
     public void UpdatePotionStock(string potionType, int change)
     {
@@ -129,10 +153,48 @@ public class JournalManager : MonoBehaviour
         UpdateJournalText();
     }
 
+    // Method to update the ingredient stock in the journal
+    public void UpdateIngredientStock(string ingredientType, int change)
+    {
+        switch (ingredientType)
+        {
+            case "Coffee Bean":
+                coffeeBeanCount += change;
+                break;
+            case "Rose":
+                roseCount += change;
+                break;
+            case "Lilac":
+                lilacCount += change;
+                break;
+            case "Lavender":
+                lavenderCount += change;
+                break;
+            case "Crimson Lycoris":
+                crimsonLycorisCount += change;
+                break;
+            case "Red Bean":
+                redBeanCount += change;
+                break;
+        }
+        UpdateJournalText();
+    }
+
     // Update the journal text to reflect the current stock
     private void UpdateJournalText()
     {
-        journalText.text = $"Health Potions: {healthPotionCount}\nMana Potions: {manaPotionCount}\nEnergy Potions: {energyPotionCount}";
+        potionJournalText.text = $"Potion Stock:\n" +
+                           $"Health Potions: {healthPotionCount}\n" +
+                           $"Mana Potions: {manaPotionCount}\n" +
+                           $"Energy Potions: {energyPotionCount}";
+
+        ingredientJournalText.text = $"Ingredient Stock:\n" +
+                           $"Coffee Beans: {coffeeBeanCount}\n" +
+                           $"Roses: {roseCount}\n" +
+                           $"Lilacs: {lilacCount}\n" +
+                           $"Lavender: {lavenderCount}\n" +
+                           $"Crimson Lycoris: {crimsonLycorisCount}\n" +
+                           $"Red Beans: {redBeanCount}";
     }
 
     public bool CheckPotionStock(string potionType)
@@ -150,7 +212,33 @@ public class JournalManager : MonoBehaviour
         }
     }
 
+    public bool CheckIngredientStock(string ingredientType)
+    {
+        switch (ingredientType)
+        {
+            case "Coffee Bean":
+                return coffeeBeanCount > 0;
+            case "Rose":
+                return roseCount > 0;
+            case "Lilac":
+                return lilacCount > 0;
+            case "Lavender":
+                return lavenderCount > 0;
+            case "Crimson Lycoris":
+                return crimsonLycorisCount > 0;
+            case "Red Bean":
+                return redBeanCount > 0;
+            default:
+                return false;
+        }
+    }
+
+    // Method to set the canvas sorting order
+    private void SetCanvasSortingOrder(int order)
+    {
+        if (journalCanvas != null)
+        {
+            journalCanvas.sortingOrder = order;
+        }
+    }
 }
-
-
-
