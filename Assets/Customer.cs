@@ -65,7 +65,7 @@ public class Customer : MonoBehaviour
         }
     }
 
-private void CheckForInteraction()
+    private void CheckForInteraction()
     {
         if (playerInRange && Input.GetKeyDown(KeyCode.E) && !hasInteracted)
         {
@@ -103,7 +103,7 @@ private void CheckForInteraction()
     IEnumerator HandlePotionRequestAfterDialogue()
     {
         yield return new WaitForSeconds(2);
-        if (JournalManager.instance.CheckPotionStock(potionNeeded))
+        if (StockManager.instance.CheckPotionStock(potionNeeded))
         {
             CompleteTransaction();
         }
@@ -116,7 +116,7 @@ private void CheckForInteraction()
 
     public void CompleteTransaction()
     {
-        JournalManager.instance.UpdatePotionStock(potionNeeded, -1);
+        StockManager.instance.UpdatePotionStock(potionNeeded, -1);
         thankYouDialogue.lines[0].text = $"Thank you for the {potionNeeded} potion.";
         DialogueManager.instance.StartDialogue(thankYouDialogue, potionNeeded);
         StartCoroutine(LeaveCafe());

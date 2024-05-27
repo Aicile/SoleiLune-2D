@@ -3288,6 +3288,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1176998722}
   m_CullTransparentMesh: 1
+--- !u!1 &1202482136
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1202482138}
+  - component: {fileID: 1202482137}
+  m_Layer: 0
+  m_Name: StockManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1202482137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202482136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16cc099ff1ff2514d928b7b394ea8e5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coffeeBeanCount: 10
+  roseCount: 10
+  lilacCount: 10
+  lavenderCount: 10
+  crimsonLycorisCount: 10
+  redBeanCount: 10
+  healthPotionCount: 2
+  manaPotionCount: 2
+  energyPotionCount: 2
+--- !u!4 &1202482138
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202482136}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.8133, y: 1.4963999, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1249975035
 GameObject:
   m_ObjectHideFlags: 0
@@ -5006,6 +5059,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   journalUI: {fileID: 1366634240}
+  journalCanvas: {fileID: 0}
   potionJournalText: {fileID: 1340254010}
   ingredientJournalText: {fileID: 478010046}
   fadeInDuration: 1.02
@@ -5136,3 +5190,4 @@ SceneRoots:
   - {fileID: 542243441}
   - {fileID: 2059506138}
   - {fileID: 2103422395}
+  - {fileID: 1202482138}

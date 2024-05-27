@@ -21,8 +21,8 @@ public class Ingredient : MonoBehaviour
         // Add the ingredient to the player's inventory or perform any other action
         Debug.Log("Picked up " + ingredientType);
 
-        // Notify the JournalManager to update the ingredient count
-        JournalManager.instance.UpdateIngredientStock(ingredientType, 1);
+        // Notify the StockManager to update the ingredient count
+        StockManager.instance.UpdateIngredientStock(ingredientType, 1);
 
         Destroy(gameObject);
     }

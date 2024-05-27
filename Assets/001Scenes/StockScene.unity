@@ -3065,15 +3065,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16cc099ff1ff2514d928b7b394ea8e5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coffeeBeanCount: 1
-  roseCount: 0
-  lilacCount: 0
-  lavenderCount: 0
-  crimsonLycorisCount: 0
-  redBeanCount: 23
-  healthPotionCount: 0
+  coffeeBeanCount: 10
+  roseCount: 10
+  lilacCount: 10
+  lavenderCount: 10
+  crimsonLycorisCount: 10
+  redBeanCount: 10
+  healthPotionCount: 2
   manaPotionCount: 2
-  energyPotionCount: 0
+  energyPotionCount: 2
 --- !u!4 &1327540317
 Transform:
   m_ObjectHideFlags: 0

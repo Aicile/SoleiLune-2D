@@ -45,11 +45,11 @@ public class Cauldron : MonoBehaviour, IDropHandler
 
     private bool CheckIngredients()
     {
-        // Check for the required ingredients in the JournalManager
+        // Check for the required ingredients in the StockManager
         foreach (int id in ingredientIDs)
         {
             string ingredientName = GetIngredientName(id);
-            if (!JournalManager.instance.CheckIngredientStock(ingredientName))
+            if (!StockManager.instance.CheckIngredientStock(ingredientName))
             {
                 return false;
             }
@@ -120,7 +120,7 @@ public class Cauldron : MonoBehaviour, IDropHandler
         {
             if (healthPotion != null)
             {
-                JournalManager.instance.UpdatePotionStock("Health", 1);
+                StockManager.instance.UpdatePotionStock("Health", 1);
                 healthPotion.SetActive(true);
                 UseIngredients();
             }
@@ -134,7 +134,7 @@ public class Cauldron : MonoBehaviour, IDropHandler
         {
             if (manaPotion != null)
             {
-                JournalManager.instance.UpdatePotionStock("Mana", 1);
+                StockManager.instance.UpdatePotionStock("Mana", 1);
                 manaPotion.SetActive(true);
                 UseIngredients();
             }
@@ -148,7 +148,7 @@ public class Cauldron : MonoBehaviour, IDropHandler
         {
             if (energyPotion != null)
             {
-                JournalManager.instance.UpdatePotionStock("Energy", 1);
+                StockManager.instance.UpdatePotionStock("Energy", 1);
                 energyPotion.SetActive(true);
                 UseIngredients();
             }
@@ -171,7 +171,7 @@ public class Cauldron : MonoBehaviour, IDropHandler
         foreach (int id in ingredientIDs)
         {
             string ingredientName = GetIngredientName(id);
-            JournalManager.instance.UpdateIngredientStock(ingredientName, -1);
+            StockManager.instance.UpdateIngredientStock(ingredientName, -1);
         }
     }
 
