@@ -38,6 +38,6 @@ public class BedroomToGarden : MonoBehaviour
 
         print("Go to Garden");
         
-        SceneManager.LoadScene("GardenScene");
+        SceneManager.LoadScene("BasementScene");
     }
 }

@@ -35,7 +35,7 @@ public class MainMenuManager : MonoBehaviour
     public void StartGame()
     {
         
-        SceneManager.LoadScene("CafeScene");
+        SceneManager.LoadScene("OpeningScene");
     }
 
     public void ExitGame()

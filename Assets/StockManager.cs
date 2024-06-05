@@ -1,6 +1,4 @@
-using System.Collections;
 using UnityEngine;
-using TMPro;
 
 public class StockManager : MonoBehaviour
 {
@@ -18,6 +16,9 @@ public class StockManager : MonoBehaviour
     public int healthPotionCount;
     public int manaPotionCount;
     public int energyPotionCount;
+
+    // Star points
+    private int starPoints;
 
     void Awake()
     {
@@ -114,6 +115,13 @@ public class StockManager : MonoBehaviour
             default:
                 return false;
         }
+    }
+
+    public void UpdateStarPoints(int points)
+    {
+        starPoints += points;
+        Debug.Log($"Star Points: {starPoints}");
+        // Add logic to handle star level changes if needed
     }
 
     private void UpdateShelves()

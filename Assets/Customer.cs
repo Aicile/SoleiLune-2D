@@ -16,9 +16,11 @@ public class Customer : MonoBehaviour
 
     private bool hasInteracted = false;
     private bool playerInRange = false;
+    private Animator animator; // Reference to the Animator component
 
     void Awake()
     {
+        animator = GetComponent<Animator>(); // Get the Animator component
         AssignRandomPotionNeed();
         thoughtBubble.SetActive(false); // Ensure it's hidden on start
         UpdatePotionDisplay();
@@ -34,9 +36,11 @@ public class Customer : MonoBehaviour
     {
         if (targetPosition != null && !hasInteracted)
         {
+            animator.SetBool("isWalking", true); // Set walking animation
             transform.position = Vector3.MoveTowards(transform.position, targetPosition.position, Time.deltaTime * 1);
             if (Vector3.Distance(transform.position, targetPosition.position) < 0.1f)
             {
+                animator.SetBool("isWalking", false); // Set idle animation
                 thoughtBubble.SetActive(true);  // Show thought bubble when at the chair
                 UpdatePotionDisplay();  // Update potion display when they sit down
             }
@@ -70,6 +74,7 @@ public class Customer : MonoBehaviour
         if (playerInRange && Input.GetKeyDown(KeyCode.E) && !hasInteracted)
         {
             hasInteracted = true;
+            animator.SetTrigger("Interact"); // Trigger interaction animation
             InitiateInteraction();
         }
     }
@@ -103,9 +108,13 @@ public class Customer : MonoBehaviour
     IEnumerator HandlePotionRequestAfterDialogue()
     {
         yield return new WaitForSeconds(2);
-        if (StockManager.instance.CheckPotionStock(potionNeeded))
+        if (InventoryManager.instance.CheckPotionInInventory(potionNeeded))
         {
-            CompleteTransaction();
+            CompleteTransaction(3); // +3 points for having the potion in inventory
+        }
+        else if (StockManager.instance.CheckPotionStock(potionNeeded))
+        {
+            CompleteTransaction(1); // +1 point for having the potion in stock
         }
         else
         {
@@ -114,8 +123,9 @@ public class Customer : MonoBehaviour
         }
     }
 
-    public void CompleteTransaction()
+    public void CompleteTransaction(int points)
     {
+        SatisfactionManager.instance.AddSatisfactionPoints(points);
         StockManager.instance.UpdatePotionStock(potionNeeded, -1);
         thankYouDialogue.lines[0].text = $"Thank you for the {potionNeeded} potion.";
         DialogueManager.instance.StartDialogue(thankYouDialogue, potionNeeded);

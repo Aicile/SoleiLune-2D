@@ -27,24 +27,33 @@ EditorBuildSettings:
     path: Assets/001Scenes/Old Scenes/Cutscene CafeScene.unity
     guid: b6a9f936dff6eb04ba282c23d8808534
   - enabled: 0
-    path: Assets/001Scenes/TownArea.unity
+    path: Assets/001Scenes/Old Scenes/TownArea.unity
     guid: ca2b500df7fbe8647a55e774584e531c
   - enabled: 1
     path: Assets/001Scenes/Felicia's_TownSqure.unity
     guid: d272bcbe12425cd4fbf991f1c5a25ffc
   - enabled: 1
-    path: Assets/001Scenes/GardenScene.unity
+    path: Assets/001Scenes/Old Scenes/GardenScene.unity
     guid: 978a8017cdddc7a46ad746084f5b7d43
   - enabled: 1
-    path: Assets/001Scenes/BedroomScene.unity
+    path: Assets/001Scenes/Old Scenes/OLD BedroomScene.unity
     guid: 56230bee44abbde4f996d41732f2dedf
   - enabled: 1
     path: Assets/001Scenes/Felicia's_WoodWoods.unity
     guid: af0b96e871247624eb4984dfecc02a5f
   - enabled: 1
-    path: Assets/001Scenes/WoodScene.unity
+    path: Assets/001Scenes/Old Scenes/WoodScene.unity
     guid: e7a6dd2b45edc5a4aab13567ecdeb726
   - enabled: 1
     path: Assets/001Scenes/StockScene.unity
     guid: 2067ce65e9d676b4c8d8508d45804ee4
+  - enabled: 1
+    path: Assets/001Scenes/BedroomScene.unity
+    guid: ab0e1c0239a3292449818e5f2ab952ee
+  - enabled: 1
+    path: Assets/001Scenes/CatlasScene.unity
+    guid: a45e99ea0505b4c49a883df3a4a3015d
+  - enabled: 1
+    path: Assets/001Scenes/OpeningScene.unity
+    guid: 8a88146baefb1064db33e2c70d9285d6
   m_configObjects: {}

@@ -1,5 +1,907 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9157676018501822877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SOLU_Ambience/INT_TimeOfDay(New)
+  m_EditorClassIdentifier: 
+  Name: INT_TimeOfDay(New)
+  StudioPath: 
+  Min: 0
+  Max: 4
+  Default: 0
+  ID:
+    data1: 2096089969
+    data2: 2655708192
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-9107892010894330682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Ambience.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD Music/Desktop/Ambience.bank
+  Name: Ambience
+  StudioPath: bank:/Ambience
+  lastModified: 638527584900000000
+  FileSizes:
+  - Name: Desktop
+    Value: 14209536
+  Exists: 1
+--- !u!114 &-8632934240628284089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Dialog.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD Music/Desktop/Dialog.bank
+  Name: Dialog
+  StudioPath: bank:/Dialog
+  lastModified: 638527584900000000
+  FileSizes:
+  - Name: Desktop
+    Value: 1782
+  Exists: 1
+--- !u!114 &-8624629186097171852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/CafeOrTown
+  m_EditorClassIdentifier: 
+  Name: CafeOrTown
+  StudioPath: parameter:/Time & Location/CafeOrTown
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1132169258
+    data2: 2361142039
+  Type: 2
+  IsGlobal: 1
+  Labels:
+  - Cafe
+  - Town
+  Exists: 1
+--- !u!114 &-8168340008583135830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Cafe/SOLU_LuneIdle
+  m_EditorClassIdentifier: 
+  Path: event:/Cafe/SOLU_LuneIdle
+  Guid:
+    Data1: -1795121853
+    Data2: 1292144950
+    Data3: 416426114
+    Data4: 1259598127
+  Banks:
+  - {fileID: 7559870746109295266}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-7676471874172592490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/SOLU_MenuClick
+  m_EditorClassIdentifier: 
+  Path: event:/UI/SOLU_MenuClick
+  Guid:
+    Data1: 555080206
+    Data2: 1337433745
+    Data3: -653178441
+    Data4: -1812694300
+  Banks:
+  - {fileID: 7941736426088318853}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-7451883013694682500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/ForagingFX.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD Music/Desktop/ForagingFX.bank
+  Name: ForagingFX
+  StudioPath: bank:/ForagingFX
+  lastModified: 638527584900000000
+  FileSizes:
+  - Name: Desktop
+    Value: 391904
+  Exists: 1
+--- !u!114 &-7046062692061205924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/InDialog
+  m_EditorClassIdentifier: 
+  Name: InDialog
+  StudioPath: parameter:/Player/InDialog
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1363136887
+    data2: 3455816972
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &-6941194799033988963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Exploration/INT_ForageBasket
+  m_EditorClassIdentifier: 
+  Path: event:/Exploration/INT_ForageBasket
+  Guid:
+    Data1: -1235579657
+    Data2: 1323929546
+    Data3: -349592415
+    Data4: 1539265563
+  Banks:
+  - {fileID: -7451883013694682500}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -6516780576265957730}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 981
+--- !u!114 &-6783423639055446070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/SOLU_Ambience
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/SOLU_Ambience
+  Guid:
+    Data1: -316515994
+    Data2: 1259683357
+    Data3: -1309779548
+    Data4: -1224211498
+  Banks:
+  - {fileID: -9107892010894330682}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -4808898546695091931}
+  - {fileID: -9157676018501822877}
+  - {fileID: 8463469518578862524}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 12000
+--- !u!114 &-6562280984821896726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MaraisTrackNo
+  m_EditorClassIdentifier: 
+  Name: MaraisTrackNo
+  StudioPath: parameter:/MaraisTrackNo
+  Min: 1
+  Max: 9
+  Default: 1
+  ID:
+    data1: 1817891296
+    data2: 3340884563
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &-6516780576265957730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/INT_ForageBasket/BasketChoke
+  m_EditorClassIdentifier: 
+  Name: BasketChoke
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2600324899
+    data2: 567190202
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &-6477561845674634902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SOLU_MX/INT_Switcher
+  m_EditorClassIdentifier: 
+  Name: INT_Switcher
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2089315290
+    data2: 2898014559
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &-6373705396123057327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/MC.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD Music/Desktop/MC.bank
+  Name: MC
+  StudioPath: bank:/MC
+  lastModified: 638527584920000000
+  FileSizes:
+  - Name: Desktop
+    Value: 214304
+  Exists: 1
+--- !u!114 &-5993774417272757982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Exploration/SOLU_Footsteps
+  m_EditorClassIdentifier: 
+  Path: event:/Exploration/SOLU_Footsteps
+  Guid:
+    Data1: -788593315
+    Data2: 1292604182
+    Data3: 1466692238
+    Data4: 985105934
+  Banks:
+  - {fileID: -6373705396123057327}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -1714423446454106260}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-5925251086583204992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/ARNOLDSON/INT_Switcher
+  m_EditorClassIdentifier: 
+  Name: INT_Switcher
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2089315290
+    data2: 2898014559
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &-5665532195924455676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/AMB_Forest
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/AMB_Forest
+  Guid:
+    Data1: 165153493
+    Data2: 1141776290
+    Data3: -3490399
+    Data4: -2100112866
+  Banks:
+  - {fileID: -9107892010894330682}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 3388518665087337978}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 180000
+--- !u!114 &-4963989333956234360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SOLU_MX/ArnoldsonTrackNo
+  m_EditorClassIdentifier: 
+  Name: ArnoldsonTrackNo
+  StudioPath: 
+  Min: 1
+  Max: 12
+  Default: 1
+  ID:
+    data1: 356406771
+    data2: 722174169
+  Type: 1
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &-4912172038998859197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/SOLU_PageTurn
+  m_EditorClassIdentifier: 
+  Path: event:/UI/SOLU_PageTurn
+  Guid:
+    Data1: 964694183
+    Data2: 1180273685
+    Data3: 58805643
+    Data4: 483033767
+  Banks:
+  - {fileID: 7559870746109295266}
+  - {fileID: 7941736426088318853}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-4808898546695091931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SOLU_Ambience/INT_TimeOfDay(Old)
+  m_EditorClassIdentifier: 
+  Name: INT_TimeOfDay(Old)
+  StudioPath: 
+  Min: 0
+  Max: 3
+  Default: 1
+  ID:
+    data1: 962973503
+    data2: 2704292633
+  Type: 2
+  IsGlobal: 1
+  Labels:
+  - Dawn
+  - Day
+  - Dusk
+  - Night
+  Exists: 1
+--- !u!114 &-4534758475118699496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/TimeOfDay
+  m_EditorClassIdentifier: 
+  Name: TimeOfDay
+  StudioPath: parameter:/Time & Location/TimeOfDay
+  Min: 0
+  Max: 1440
+  Default: 0
+  ID:
+    data1: 3998519902
+    data2: 1611158102
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &-4219278153156750706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/AMB_Cafe
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/AMB_Cafe
+  Guid:
+    Data1: -899189192
+    Data2: 1148408147
+    Data3: -1045402959
+    Data4: -2007195394
+  Banks:
+  - {fileID: -9107892010894330682}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 8751259231740353674}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-3870270169558069933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SOLU_ForagePickup/BasketChoke
+  m_EditorClassIdentifier: 
+  Name: BasketChoke
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2600324899
+    data2: 567190202
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &-3543402270520666890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Town/SOLU_ShopDoor
+  m_EditorClassIdentifier: 
+  Path: event:/Town/SOLU_ShopDoor
+  Guid:
+    Data1: 1425530683
+    Data2: 1158908962
+    Data3: -403182671
+    Data4: 817974329
+  Banks:
+  - {fileID: -2775872453517348733}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-3439757014845693701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Cafe/SOLU_GenGlug
+  m_EditorClassIdentifier: 
+  Path: event:/Cafe/SOLU_GenGlug
+  Guid:
+    Data1: 375734916
+    Data2: 1261058530
+    Data3: 704319929
+    Data4: 822251032
+  Banks:
+  - {fileID: 7559870746109295266}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-2979183160985610555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/(old)AMB_Forest/INT_TimeOfDay(Old)
+  m_EditorClassIdentifier: 
+  Name: INT_TimeOfDay(Old)
+  StudioPath: 
+  Min: 0
+  Max: 3
+  Default: 1
+  ID:
+    data1: 962973503
+    data2: 2704292633
+  Type: 2
+  IsGlobal: 1
+  Labels:
+  - Dawn
+  - Day
+  - Dusk
+  - Night
+  Exists: 1
+--- !u!114 &-2775872453517348733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/TownFX.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD Music/Desktop/TownFX.bank
+  Name: TownFX
+  StudioPath: bank:/TownFX
+  lastModified: 638527585020000000
+  FileSizes:
+  - Name: Desktop
+    Value: 146464
+  Exists: 1
+--- !u!114 &-2267293657019594645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/ARNOLDSON/ArnoldsonTrackNo
+  m_EditorClassIdentifier: 
+  Name: ArnoldsonTrackNo
+  StudioPath: 
+  Min: 1
+  Max: 12
+  Default: 1
+  ID:
+    data1: 356406771
+    data2: 722174169
+  Type: 1
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &-1820739600315034081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SOLU_MX/DownStairs
+  m_EditorClassIdentifier: 
+  Name: DownStairs
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2874659099
+    data2: 1157244923
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &-1714423446454106260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SOLU_Footsteps/StepMaterial
+  m_EditorClassIdentifier: 
+  Name: StepMaterial
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 1191086916
+    data2: 1818331863
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Wood
+  - Stone
+  - Grass
+  Exists: 1
+--- !u!114 &-1557644540044297097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/ArnoldsonTrackNo
+  m_EditorClassIdentifier: 
+  Name: ArnoldsonTrackNo
+  StudioPath: parameter:/ArnoldsonTrackNo
+  Min: 1
+  Max: 12
+  Default: 1
+  ID:
+    data1: 356406771
+    data2: 722174169
+  Type: 1
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &-1115455605861556418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Dialog/SOLU_QuestComplete
+  m_EditorClassIdentifier: 
+  Path: event:/Dialog/SOLU_QuestComplete
+  Guid:
+    Data1: -1249801297
+    Data2: 1214260984
+    Data3: 2110265222
+    Data4: -1629920515
+  Banks:
+  - {fileID: -8632934240628284089}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-1033233499342435737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/GramoChannel
+  m_EditorClassIdentifier: 
+  Name: GramoChannel
+  StudioPath: parameter:/Objects/GramoChannel
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 221336730
+    data2: 677662995
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &-837580133604421831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/MX/SOLU_MX_Skip
+  m_EditorClassIdentifier: 
+  Path: event:/MX/SOLU_MX_Skip
+  Guid:
+    Data1: 814067635
+    Data2: 1170688079
+    Data3: -577522778
+    Data4: 1972230025
+  Banks:
+  - {fileID: 8232770632248385026}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 7528316834875064231}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-837221866558666891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/INT_Skipper
+  m_EditorClassIdentifier: 
+  Name: INT_Skipper
+  StudioPath: parameter:/INT_Skipper
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2922313082
+    data2: 1161371478
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &-336407651766542761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/AMB_Town/TimeOfDay
+  m_EditorClassIdentifier: 
+  Name: TimeOfDay
+  StudioPath: 
+  Min: 0
+  Max: 1440
+  Default: 0
+  ID:
+    data1: 3998519902
+    data2: 1611158102
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12,10 +914,1032 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
-  EditorBanks: []
-  EditorEvents: []
-  EditorParameters: []
-  MasterBanks: []
-  StringsBanks: []
-  cacheTime: 0
+  EditorBanks:
+  - {fileID: 36498087985414067}
+  - {fileID: -9107892010894330682}
+  - {fileID: 8958434650080648740}
+  - {fileID: 7559870746109295266}
+  - {fileID: -8632934240628284089}
+  - {fileID: -7451883013694682500}
+  - {fileID: 3714512323726622100}
+  - {fileID: -6373705396123057327}
+  - {fileID: 8232770632248385026}
+  - {fileID: -2775872453517348733}
+  - {fileID: 7941736426088318853}
+  EditorEvents:
+  - {fileID: 3274307321911377903}
+  - {fileID: -4219278153156750706}
+  - {fileID: -6783423639055446070}
+  - {fileID: -5665532195924455676}
+  - {fileID: 808529633577368061}
+  - {fileID: 852059430247872037}
+  - {fileID: -8168340008583135830}
+  - {fileID: -3439757014845693701}
+  - {fileID: -4912172038998859197}
+  - {fileID: 6525514087114552247}
+  - {fileID: 485951136490486456}
+  - {fileID: -1115455605861556418}
+  - {fileID: 3884533924423293984}
+  - {fileID: -6941194799033988963}
+  - {fileID: -5993774417272757982}
+  - {fileID: 1180184106507765012}
+  - {fileID: -837580133604421831}
+  - {fileID: 7699025521258632295}
+  - {fileID: -3543402270520666890}
+  - {fileID: -7676471874172592490}
+  - {fileID: 4902282865921609240}
+  - {fileID: 812235119461574729}
+  - {fileID: 7671932232306891168}
+  - {fileID: 7707161379126700177}
+  - {fileID: 2727161779294136453}
+  - {fileID: 6615959367667264618}
+  - {fileID: 4493928518988920835}
+  EditorParameters:
+  - {fileID: -1033233499342435737}
+  - {fileID: 7421252370927675999}
+  - {fileID: -837221866558666891}
+  - {fileID: 646883140806141284}
+  - {fileID: 8844412946852392530}
+  - {fileID: -8624629186097171852}
+  - {fileID: -4534758475118699496}
+  - {fileID: -6562280984821896726}
+  - {fileID: 6927364516572509339}
+  - {fileID: -7046062692061205924}
+  - {fileID: 7616979430323353805}
+  - {fileID: -1557644540044297097}
+  MasterBanks:
+  - {fileID: 3714512323726622100}
+  StringsBanks:
+  - {fileID: 36498087985414067}
+  cacheTime: 638527585020000000
   cacheVersion: 131616
+--- !u!114 &36498087985414067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD Music/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 638527584900000000
+  FileSizes:
+  - Name: Desktop
+    Value: 3406
+  Exists: 1
+--- !u!114 &485951136490486456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Dialog/SOLU_DIABlank
+  m_EditorClassIdentifier: 
+  Path: event:/Dialog/SOLU_DIABlank
+  Guid:
+    Data1: 938383950
+    Data2: 1093027468
+    Data3: 320844954
+    Data4: -387702573
+  Banks:
+  - {fileID: -8632934240628284089}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &646883140806141284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BasketChoke
+  m_EditorClassIdentifier: 
+  Name: BasketChoke
+  StudioPath: parameter:/Player/BasketChoke
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2600324899
+    data2: 567190202
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &808529633577368061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Cafe/SOLU_SoleiIdle
+  m_EditorClassIdentifier: 
+  Path: event:/Cafe/SOLU_SoleiIdle
+  Guid:
+    Data1: -1276510934
+    Data2: 1302827353
+    Data3: -1929172561
+    Data4: -1992001210
+  Banks:
+  - {fileID: 7559870746109295266}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &812235119461574729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/SOLU_OpenMenu
+  m_EditorClassIdentifier: 
+  Path: event:/UI/SOLU_OpenMenu
+  Guid:
+    Data1: -407314191
+    Data2: 1293852512
+    Data3: -1069995377
+    Data4: -1359225764
+  Banks:
+  - {fileID: 7941736426088318853}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &852059430247872037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Cafe/SOLU_DoorChime
+  m_EditorClassIdentifier: 
+  Path: event:/Cafe/SOLU_DoorChime
+  Guid:
+    Data1: 1355118653
+    Data2: 1270798282
+    Data3: -1348010832
+    Data4: 1609422670
+  Banks:
+  - {fileID: 7559870746109295266}
+  - {fileID: -2775872453517348733}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &1047533704578058832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SOLU_MX/MaraisTrackNo
+  m_EditorClassIdentifier: 
+  Name: MaraisTrackNo
+  StudioPath: 
+  Min: 1
+  Max: 9
+  Default: 1
+  ID:
+    data1: 1817891296
+    data2: 3340884563
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &1180184106507765012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/MX/SOLU_NoxChausson
+  m_EditorClassIdentifier: 
+  Path: event:/MX/SOLU_NoxChausson
+  Guid:
+    Data1: -1067534947
+    Data2: 1256436333
+    Data3: 1490461110
+    Data4: -1087501734
+  Banks:
+  - {fileID: 8232770632248385026}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 29432
+--- !u!114 &1944702788986283990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SOLU_ForagePickup/RareIngredient
+  m_EditorClassIdentifier: 
+  Name: RareIngredient
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3221843979
+    data2: 1225054981
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - False
+  - True
+  Exists: 1
+--- !u!114 &2727161779294136453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Elements/AMB_Cauldron
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Elements/AMB_Cauldron
+  Guid:
+    Data1: -1617947454
+    Data2: 1271106076
+    Data3: 3498933
+    Data4: 946985111
+  Banks:
+  - {fileID: -9107892010894330682}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 19500
+--- !u!114 &3274307321911377903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/AMB_Town
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/AMB_Town
+  Guid:
+    Data1: 688884562
+    Data2: 1169872109
+    Data3: 2110536593
+    Data4: -484391381
+  Banks:
+  - {fileID: -9107892010894330682}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -336407651766542761}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 120000
+--- !u!114 &3388518665087337978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/AMB_Forest/TimeOfDay
+  m_EditorClassIdentifier: 
+  Name: TimeOfDay
+  StudioPath: 
+  Min: 0
+  Max: 1440
+  Default: 0
+  ID:
+    data1: 3998519902
+    data2: 1611158102
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &3615576821061438343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SOLU_MX/GramoChannel
+  m_EditorClassIdentifier: 
+  Name: GramoChannel
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 221336730
+    data2: 677662995
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &3714512323726622100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD Music/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638527584900000000
+  FileSizes:
+  - Name: Desktop
+    Value: 3118
+  Exists: 1
+--- !u!114 &3884533924423293984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Exploration/SOLU_ForagePickup
+  m_EditorClassIdentifier: 
+  Path: event:/Exploration/SOLU_ForagePickup
+  Guid:
+    Data1: -124037441
+    Data2: 1103861776
+    Data3: -72374144
+    Data4: 500711749
+  Banks:
+  - {fileID: -7451883013694682500}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 1944702788986283990}
+  - {fileID: 4624712581506174123}
+  - {fileID: 3991723969344200474}
+  - {fileID: -3870270169558069933}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 340
+--- !u!114 &3991723969344200474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SOLU_ForagePickup/Basket
+  m_EditorClassIdentifier: 
+  Name: Basket
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 385343464
+    data2: 3628530311
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Playing
+  - End
+  Exists: 1
+--- !u!114 &4493928518988920835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/MX/Marais/ARNOLDSON
+  m_EditorClassIdentifier: 
+  Path: event:/MX/Marais/ARNOLDSON
+  Guid:
+    Data1: 1361883628
+    Data2: 1264117748
+    Data3: 1509079190
+    Data4: 1023433623
+  Banks:
+  - {fileID: 8232770632248385026}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -5925251086583204992}
+  - {fileID: -2267293657019594645}
+  - {fileID: 9050709148774747585}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 80000
+--- !u!114 &4624712581506174123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SOLU_ForagePickup/ForagingMaterial
+  m_EditorClassIdentifier: 
+  Name: ForagingMaterial
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 2739007839
+    data2: 2227410003
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Foliage
+  - Stone
+  - Plant
+  Exists: 1
+--- !u!114 &4902282865921609240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/SOLU_MenuHover
+  m_EditorClassIdentifier: 
+  Path: event:/UI/SOLU_MenuHover
+  Guid:
+    Data1: 1337179946
+    Data2: 1199405654
+    Data3: -2085447551
+    Data4: -112023333
+  Banks:
+  - {fileID: 7941736426088318853}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &5201265921489216770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/(old)AMB_Forest/TimeOfDay
+  m_EditorClassIdentifier: 
+  Name: TimeOfDay
+  StudioPath: 
+  Min: 0
+  Max: 1440
+  Default: 0
+  ID:
+    data1: 3998519902
+    data2: 1611158102
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &6525514087114552247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Cafe/SOLU_StairStepDown
+  m_EditorClassIdentifier: 
+  Path: event:/Cafe/SOLU_StairStepDown
+  Guid:
+    Data1: 1758395373
+    Data2: 1307448366
+    Data3: -94396794
+    Data4: 1619470034
+  Banks:
+  - {fileID: 7559870746109295266}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &6615959367667264618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Old/(old)AMB_Forest
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Old/(old)AMB_Forest
+  Guid:
+    Data1: -129048864
+    Data2: 1298004980
+    Data3: -1894131293
+    Data4: -477974395
+  Banks:
+  - {fileID: -9107892010894330682}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 5201265921489216770}
+  - {fileID: -2979183160985610555}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &6927364516572509339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/DownStairs
+  m_EditorClassIdentifier: 
+  Name: DownStairs
+  StudioPath: parameter:/Time & Location/DownStairs
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2874659099
+    data2: 1157244923
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &7421252370927675999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Location
+  m_EditorClassIdentifier: 
+  Name: Location
+  StudioPath: parameter:/Time & Location/Location
+  Min: 0
+  Max: 4
+  Default: 1
+  ID:
+    data1: 4099245321
+    data2: 3153527734
+  Type: 2
+  IsGlobal: 1
+  Labels:
+  - None
+  - Town
+  - Cafe
+  - Inside
+  - Woods
+  Exists: 1
+--- !u!114 &7528316834875064231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SOLU_MX_Skip/INT_Skipper
+  m_EditorClassIdentifier: 
+  Name: INT_Skipper
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2922313082
+    data2: 1161371478
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &7559870746109295266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/CafeFX.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD Music/Desktop/CafeFX.bank
+  Name: CafeFX
+  StudioPath: bank:/CafeFX
+  lastModified: 638527584900000000
+  FileSizes:
+  - Name: Desktop
+    Value: 157280
+  Exists: 1
+--- !u!114 &7616979430323353805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/INT_Switcher
+  m_EditorClassIdentifier: 
+  Name: INT_Switcher
+  StudioPath: parameter:/INT_Switcher
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2089315290
+    data2: 2898014559
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &7671932232306891168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Old/(old)AMB_Town
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Old/(old)AMB_Town
+  Guid:
+    Data1: 194298114
+    Data2: 1080346384
+    Data3: 1427708298
+    Data4: 1553195156
+  Banks:
+  - {fileID: -9107892010894330682}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 105679
+--- !u!114 &7699025521258632295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/MX/SOLU_MX
+  m_EditorClassIdentifier: 
+  Path: event:/MX/SOLU_MX
+  Guid:
+    Data1: 1450849519
+    Data2: 1322487104
+    Data3: 1427723931
+    Data4: -955441895
+  Banks:
+  - {fileID: 8232770632248385026}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -6477561845674634902}
+  - {fileID: 1047533704578058832}
+  - {fileID: -1820739600315034081}
+  - {fileID: 8945717022989365915}
+  - {fileID: 3615576821061438343}
+  - {fileID: -4963989333956234360}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 54000
+--- !u!114 &7707161379126700177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Elements/AMB_River
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Elements/AMB_River
+  Guid:
+    Data1: 1679256513
+    Data2: 1209126679
+    Data3: -652164730
+    Data4: 1018982234
+  Banks:
+  - {fileID: -9107892010894330682}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 90000
+--- !u!114 &7941736426088318853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/UI.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD Music/Desktop/UI.bank
+  Name: UI
+  StudioPath: bank:/UI
+  lastModified: 638527585020000000
+  FileSizes:
+  - Name: Desktop
+    Value: 11072
+  Exists: 1
+--- !u!114 &8232770632248385026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/MX.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD Music/Desktop/MX.bank
+  Name: MX
+  StudioPath: bank:/MX
+  lastModified: 638527585020000000
+  FileSizes:
+  - Name: Desktop
+    Value: 27482368
+  Exists: 1
+--- !u!114 &8463469518578862524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SOLU_Ambience/TimeOfDay
+  m_EditorClassIdentifier: 
+  Name: TimeOfDay
+  StudioPath: 
+  Min: 0
+  Max: 1440
+  Default: 0
+  ID:
+    data1: 3998519902
+    data2: 1611158102
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &8751259231740353674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/AMB_Cafe/CafeRoom
+  m_EditorClassIdentifier: 
+  Name: CafeRoom
+  StudioPath: 
+  Min: 0
+  Max: 3
+  Default: 0
+  ID:
+    data1: 1695225716
+    data2: 3199330261
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Cafe
+  - Basement
+  - Cauldron
+  - Bedroom
+  Exists: 1
+--- !u!114 &8844412946852392530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/INT_TimeOfDay(Old)
+  m_EditorClassIdentifier: 
+  Name: INT_TimeOfDay(Old)
+  StudioPath: parameter:/Time & Location/INT_TimeOfDay(Old)
+  Min: 0
+  Max: 3
+  Default: 1
+  ID:
+    data1: 962973503
+    data2: 2704292633
+  Type: 2
+  IsGlobal: 1
+  Labels:
+  - Dawn
+  - Day
+  - Dusk
+  - Night
+  Exists: 1
+--- !u!114 &8945717022989365915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SOLU_MX/INT_Skipper
+  m_EditorClassIdentifier: 
+  Name: INT_Skipper
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2922313082
+    data2: 1161371478
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &8958434650080648740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/BrewingFX.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD Music/Desktop/BrewingFX.bank
+  Name: BrewingFX
+  StudioPath: bank:/BrewingFX
+  lastModified: 638527584900000000
+  FileSizes:
+  - Name: Desktop
+    Value: 494
+  Exists: 1
+--- !u!114 &9050709148774747585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/ARNOLDSON/GramoChannel
+  m_EditorClassIdentifier: 
+  Name: GramoChannel
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 221336730
+    data2: 677662995
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CustomerManager : MonoBehaviour
 {
-    public GameObject customerPrefab;
+    public List<GameObject> customerPrefabs; // List of customer prefabs (male and female)
     public Transform doorPosition; // Assign this in the Unity Editor to the position of the door
     public List<Transform> chairPositions = new List<Transform>(); // Adjusted naming for clarity
     public float spawnRate = 5f;
@@ -31,6 +31,7 @@ public class CustomerManager : MonoBehaviour
     {
         if (customers.Count < chairPositions.Count)
         {
+            GameObject customerPrefab = GetRandomCustomerPrefab();
             GameObject customerObj = Instantiate(customerPrefab, doorPosition.position, Quaternion.identity);
             Customer customer = customerObj.GetComponent<Customer>();
             if (customer != null)
@@ -47,6 +48,12 @@ public class CustomerManager : MonoBehaviour
         }
     }
 
+    GameObject GetRandomCustomerPrefab()
+    {
+        if (customerPrefabs.Count == 0) return null;
+        int randomIndex = Random.Range(0, customerPrefabs.Count);
+        return customerPrefabs[randomIndex];
+    }
 
     int FindAvailableChair()
     {
