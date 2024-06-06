@@ -63,7 +63,6 @@ public class GameClock : MonoBehaviour
         // Teleport the player to the bed's position
         player.transform.position = bedPosition.position;
     }
-
     void ResetTimeToMorning()
     {
         // Calculate the time in seconds corresponding to 6 AM

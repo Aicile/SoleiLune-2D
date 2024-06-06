@@ -269,8 +269,8 @@ Transform:
   m_GameObject: {fileID: 469659305}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalPosition: {x: -0.97, y: 0, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -289,11 +289,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 4952334848821919348, guid: 7ddb02a73a140334ea4b472846161648, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.35
+      value: -2.24
       objectReference: {fileID: 0}
     - target: {fileID: 4952334848821919348, guid: 7ddb02a73a140334ea4b472846161648, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.73
+      value: -5.31
       objectReference: {fileID: 0}
     - target: {fileID: 4952334848821919348, guid: 7ddb02a73a140334ea4b472846161648, type: 3}
       propertyPath: m_LocalPosition.z
@@ -514,6 +514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1513606422}
   - component: {fileID: 1513606421}
+  - component: {fileID: 1513606423}
   m_Layer: 0
   m_Name: Bedroom_Walls_Floor
   m_TagString: Untagged
@@ -588,6 +589,71 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &1513606423
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513606420}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 2.477269, y: -1.9389961}
+  - {x: 2.304572, y: -1.8882843}
+  - {x: 2.2297957, y: -1.2418245}
+  - {x: 1.5297036, y: -1.0364016}
+  - {x: 1.266243, y: -1.3875673}
+  - {x: 0.80789626, y: -1.4908676}
+  - {x: 0.7985533, y: -1.0090324}
+  - {x: 0.3407114, y: -0.8391079}
+  - {x: -0.31936803, y: -0.8360754}
+  - {x: -0.8038562, y: -1.0085359}
+  - {x: -0.83073014, y: -1.4786935}
+  - {x: -0.9974539, y: -1.4877825}
+  - {x: -2.3820448, y: -1.9387312}
+  - {x: -2.5583432, y: -2.1117408}
+  - {x: -2.6044278, y: -2.4393425}
+  - {x: -2.5819325, y: -2.7498612}
+  - {x: -2.4265072, y: -3.0741105}
+  - {x: -3.0028968, y: -3.2506347}
+  - {x: -2.4667194, y: -3.5851016}
+  - {x: -1.5856421, y: -3.3927865}
+  - {x: -0.8586733, y: -3.5550075}
+  - {x: 0.40315923, y: -3.6303566}
+  - {x: 1.4117827, y: -3.4502501}
+  - {x: 2.2466202, y: -3.0411355}
+  - {x: 2.5890243, y: -2.5433576}
+  - {x: 2.4800377, y: -1.9309547}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &1526864127
 GameObject:
   m_ObjectHideFlags: 0
@@ -772,6 +838,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1683164751}
   - component: {fileID: 1683164750}
+  - component: {fileID: 1683164752}
   m_Layer: 0
   m_Name: Bedroom_Bed
   m_TagString: Untagged
@@ -846,6 +913,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &1683164752
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683164749}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.34482437, y: -2.0625856}
+  - {x: 0.3489947, y: -1.784401}
+  - {x: 0.942827, y: -1.9398501}
+  - {x: 0.92509556, y: -2.2455568}
+  - {x: 0.37025762, y: -2.0769691}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
