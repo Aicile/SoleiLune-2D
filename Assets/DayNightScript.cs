@@ -5,7 +5,6 @@ using TMPro; // Using TextMeshPro for the clock display
 using UnityEngine.Rendering; // Used to access the volume component
 using UnityEngine.SceneManagement; // Used for scene management
 
-
 public class DayNightScript : MonoBehaviour
 {
     public static DayNightScript Instance { get; private set; }
@@ -15,10 +14,11 @@ public class DayNightScript : MonoBehaviour
     public Volume ppv;
 
     public float tick;
-    private float seconds = 0;
-    private int mins = 0;
-    private int hours = 8; // Start at 8 AM
-    private int days = 1;
+
+    private static float seconds = 0;
+    private static int mins = 0;
+    private static int hours = 8; // Start at 8 AM
+    private static int days = 1;
 
     public bool activateLights;
     public GameObject[] lights;
@@ -53,6 +53,7 @@ public class DayNightScript : MonoBehaviour
         ppv = FindObjectOfType<Volume>();
         timeDisplay = GameObject.FindWithTag("TimeDisplay")?.GetComponent<TextMeshProUGUI>();
         dayDisplay = GameObject.FindWithTag("DayDisplay")?.GetComponent<TextMeshProUGUI>();
+        DisplayTime(); // Update the display after loading a new scene
     }
 
     void FixedUpdate()
@@ -110,7 +111,6 @@ public class DayNightScript : MonoBehaviour
             UpdateNightEnvironment(false);
         }
     }
-
 
     void UpdateNightEnvironment(bool isNight)
     {

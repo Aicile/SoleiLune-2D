@@ -12,8 +12,14 @@ public class CafeMusicManager : MonoBehaviour
 
     void Start()
     {
+        // Ensure the bank containing the event is loaded
+        RuntimeManager.LoadBank("Master", true);
+        RuntimeManager.LoadBank("SOLU_MX", true);
+
         // Create an instance of the music event
         musicInstance = RuntimeManager.CreateInstance(musicEvent);
+        // Set the volume (1.0f is the default volume level)
+        musicInstance.setVolume(1.0f);
         // Start playing the music
         musicInstance.start();
     }

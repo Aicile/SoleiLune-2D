@@ -25,6 +25,12 @@ public class IngredientSpawner : MonoBehaviour
             return;
         }
 
+        if (ingredientPrefabs.Length == 0)
+        {
+            Debug.LogError("No ingredient prefabs assigned. Please assign ingredient prefabs in the inspector.");
+            return;
+        }
+
         StartCoroutine(SpawnIngredients());
     }
 
@@ -50,10 +56,26 @@ public class IngredientSpawner : MonoBehaviour
             Random.Range(minY, maxY)
         );
 
+        // Log the spawn position
+        Debug.Log($"Spawning ingredient at position: {spawnPosition}");
+
         // Choose a random ingredient to spawn
         GameObject randomIngredient = ingredientPrefabs[Random.Range(0, ingredientPrefabs.Length)];
 
+        // Log the ingredient being spawned
+        Debug.Log($"Spawning ingredient: {randomIngredient.name}");
+
         // Instantiate the ingredient as a child of the Canvas
-        Instantiate(randomIngredient, spawnPosition, Quaternion.identity, canvas.transform);
+        GameObject spawnedIngredient = Instantiate(randomIngredient, spawnPosition, Quaternion.identity, canvas.transform);
+
+        // Log the spawned ingredient
+        if (spawnedIngredient != null)
+        {
+            Debug.Log($"Ingredient {spawnedIngredient.name} spawned successfully.");
+        }
+        else
+        {
+            Debug.LogError("Failed to spawn ingredient.");
+        }
     }
 }

@@ -2,18 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CatlasManager : MonoBehaviour
 {
     public static CatlasManager instance; // Singleton instance
 
-    public Text soleilStatusText;
-    public Text luneStatusText;
-    public Button sendSoleilToTownButton;
-    public Button sendSoleilToWoodWoodsButton;
-    public Button sendLuneToTownButton;
-    public Button sendLuneToWoodWoodsButton;
-    public Text timeOfDayText; // Text to display the current time of day
+    public TextMeshProUGUI soleilStatusText;
+    public TextMeshProUGUI luneStatusText;
+    public Image townImage;
+    public Image woodWoodsImage;
+    public Button sendSoleilButton;
+    public Button sendLuneButton;
+    public TextMeshProUGUI timeOfDayText; // Text to display the current time of day
 
     private bool soleilOnMission = false;
     private bool luneOnMission = false;
@@ -22,8 +23,8 @@ public class CatlasManager : MonoBehaviour
     private float soleilMissionDuration = 300f; // 5 minutes for example
     private float luneMissionDuration = 300f;   // 5 minutes for example
 
-    private string soleilSelectedArea;
-    private string luneSelectedArea;
+    private string selectedArea; // The selected area
+    private string selectedCat;  // The selected cat (Soleil or Lune)
 
     private void Awake()
     {
@@ -34,15 +35,63 @@ public class CatlasManager : MonoBehaviour
         else
         {
             instance = this;
+            DontDestroyOnLoad(gameObject); // Persist across scenes
         }
     }
 
     private void Start()
     {
-        sendSoleilToTownButton.onClick.AddListener(() => SendCatOnMission("Soleil", "Town"));
-        sendSoleilToWoodWoodsButton.onClick.AddListener(() => SendCatOnMission("Soleil", "WoodWoods"));
-        sendLuneToTownButton.onClick.AddListener(() => SendCatOnMission("Lune", "Town"));
-        sendLuneToWoodWoodsButton.onClick.AddListener(() => SendCatOnMission("Lune", "WoodWoods"));
+        if (townImage == null)
+        {
+            Debug.LogError("Town Image is not assigned.");
+        }
+        else
+        {
+            townImage.GetComponent<Button>().onClick.AddListener(() => SelectArea("Town"));
+        }
+
+        if (woodWoodsImage == null)
+        {
+            Debug.LogError("WoodWoods Image is not assigned.");
+        }
+        else
+        {
+            woodWoodsImage.GetComponent<Button>().onClick.AddListener(() => SelectArea("WoodWoods"));
+        }
+
+        if (sendSoleilButton == null)
+        {
+            Debug.LogError("Send Soleil Button is not assigned.");
+        }
+        else
+        {
+            sendSoleilButton.onClick.AddListener(() => SendCatOnMission("Soleil"));
+        }
+
+        if (sendLuneButton == null)
+        {
+            Debug.LogError("Send Lune Button is not assigned.");
+        }
+        else
+        {
+            sendLuneButton.onClick.AddListener(() => SendCatOnMission("Lune"));
+        }
+
+        if (timeOfDayText == null)
+        {
+            Debug.LogError("Time of Day Text is not assigned.");
+        }
+
+        if (soleilStatusText == null)
+        {
+            Debug.LogError("Soleil Status Text is not assigned.");
+        }
+
+        if (luneStatusText == null)
+        {
+            Debug.LogError("Lune Status Text is not assigned.");
+        }
+
         UpdateTimeOfDay(); // Initialize the time of day display
     }
 
@@ -51,21 +100,26 @@ public class CatlasManager : MonoBehaviour
         UpdateMissionStatus();
     }
 
-    public void SendCatOnMission(string catName, string area)
+    public void SelectArea(string area)
+    {
+        selectedArea = area;
+        Debug.Log($"Selected Area: {selectedArea}");
+        // Update UI to show selected area ingredients
+    }
+
+    public void SendCatOnMission(string catName)
     {
         if (catName == "Soleil" && !soleilOnMission)
         {
             soleilOnMission = true;
             soleilMissionTime = Time.time + soleilMissionDuration;
-            soleilStatusText.text = $"Soleil is on a mission to {area}!";
-            soleilSelectedArea = area;
+            soleilStatusText.text = $"Soleil is on a mission to {selectedArea}!";
         }
         else if (catName == "Lune" && !luneOnMission)
         {
             luneOnMission = true;
             luneMissionTime = Time.time + luneMissionDuration;
-            luneStatusText.text = $"Lune is on a mission to {area}!";
-            luneSelectedArea = area;
+            luneStatusText.text = $"Lune is on a mission to {selectedArea}!";
         }
     }
 
@@ -74,19 +128,19 @@ public class CatlasManager : MonoBehaviour
         if (soleilOnMission && Time.time >= soleilMissionTime)
         {
             soleilOnMission = false;
-            ReceiveMissionRewards("Soleil", soleilSelectedArea);
+            ReceiveMissionRewards("Soleil");
             soleilStatusText.text = "Soleil has returned!";
         }
 
         if (luneOnMission && Time.time >= luneMissionTime)
         {
             luneOnMission = false;
-            ReceiveMissionRewards("Lune", luneSelectedArea);
+            ReceiveMissionRewards("Lune");
             luneStatusText.text = "Lune has returned!";
         }
     }
 
-    private void ReceiveMissionRewards(string catName, string selectedArea)
+    private void ReceiveMissionRewards(string catName)
     {
         List<string> ingredients = new List<string>();
         string timeOfDay = timeOfDayText.text;
