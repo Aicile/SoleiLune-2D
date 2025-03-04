@@ -157,8 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 51, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 51, y: 5.6169}
+  m_SizeDelta: {x: 100, y: 50.875}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &382046493
 MonoBehaviour:
@@ -327,6 +327,7 @@ MonoBehaviour:
   movingIndicator: {fileID: 745664519}
   indicatorSpeed: 100
   isClockwise: 1
+  faceCenter: 1
   skillCheckShape: 0
   onSuccess:
     m_PersistentCalls:

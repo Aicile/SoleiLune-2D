@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 public class Script_MiniGame_SkillCheck : MonoBehaviour
 {
+    #region Inspector Variables and other variables
     [Header("Skill Check Settings")]
     public RectTransform skillCheckArea; // Defines the area where the skill check takes place. Adjusting its size or position affects the layout.
     public RectTransform successZone; // The zone the indicator must be in for a successful skill check. Adjusting its size makes success easier or harder.
@@ -13,6 +14,7 @@ public class Script_MiniGame_SkillCheck : MonoBehaviour
 
     [Range(0.1f, 100f)] public float indicatorSpeed = 1f; // Controls the speed of the indicator. Higher values make the skill check more challenging.
     public bool isClockwise = true; // Determines the direction of the indicator's movement. Set to false for counterclockwise motion.
+    public bool faceCenter = true; // When enabled the Indcator will always face the center of the skill check.
 
     [Header("Customizable Shape Settings")]
     public ShapeType skillCheckShape = ShapeType.Circle; // Defines the shape of the skill check area. Options include Circle, Oval, Rectangle, and Custom.
@@ -24,6 +26,13 @@ public class Script_MiniGame_SkillCheck : MonoBehaviour
 
     private bool isActive = false; // Tracks whether the skill check is currently active.
     private float currentAngle = 0f; // Current angle of the indicator, primarily for circular and oval shapes.
+    #endregion
+    private void Start()
+    {
+        RandomizeSuccessZone(); // Ensures the success zone is randomized on play(Workaround not sure if this will be the way to do it yet).
+    }
+
+
 
     private void Update()
     {
@@ -41,6 +50,7 @@ public class Script_MiniGame_SkillCheck : MonoBehaviour
     {
         isActive = true; // Activates the skill check.
         currentAngle = 0f; // Resets the indicator's angle.
+        RandomizeSuccessZone(); // Place success zone at a new perimeter position.
     }
 
     public void StopSkillCheck()
@@ -68,6 +78,11 @@ public class Script_MiniGame_SkillCheck : MonoBehaviour
                 // Extend here for custom shapes as needed.
                 break;
         }
+        if (faceCenter) // Its an If statement which only activates if the faceCenter is set to true in Inspector.
+        {
+            FaceCenter(); // Ensure the indicator always faces the center.
+        }
+        
     }
 
     private void PositionIndicatorInCircle()
@@ -91,7 +106,102 @@ public class Script_MiniGame_SkillCheck : MonoBehaviour
     {
         // Add logic for rectangular movement here.
         // This could involve moving along the edges of the rectangle.
+
+        float width = skillCheckArea.rect.width / 2;
+        float height = skillCheckArea.rect.height / 2;
+
+        // Ensure the square logic uses the smaller dimension.
+        float squareSize = Mathf.Min(width, height); // This ensures the square uses the smallest dimension.
+
+        // Move the indicator along the rectangle's edges.
+        // Assume movement is incremental along the edges of the rectangle (in a clockwise or counterclockwise direction)
+        Vector2 newPosition = Vector2.zero;
+
+        if (currentAngle < 90)
+        {
+            newPosition = new Vector2(currentAngle * squareSize / 90, squareSize); // Top edge
+        }
+        else if (currentAngle < 180)
+        {
+            newPosition = new Vector2(squareSize, squareSize - (currentAngle - 90) * squareSize / 90); // Right edge
+        }
+        else if (currentAngle < 270)
+        {
+            newPosition = new Vector2(squareSize - (currentAngle - 180) * squareSize / 90, -squareSize); // Bottom edge
+        }
+        else
+        {
+            newPosition = new Vector2(-squareSize, -squareSize + (currentAngle - 270) * squareSize / 90); // Left edge
+        }
+
+        movingIndicator.localPosition = newPosition; // Update the indicator's position.
+        currentAngle = (currentAngle + movement) % 360; // Increment the angle and loop.
     }
+
+
+
+
+    private void RandomizeSuccessZone()
+    {
+        Vector2 newPosition = Vector2.zero;
+
+        switch (skillCheckShape)
+        {
+            case ShapeType.Circle:
+                newPosition = GetRandomPointOnCircle();
+                break;
+            case ShapeType.Oval:
+                newPosition = GetRandomPointOnOval();
+                break;
+            case ShapeType.Rectangle:
+                newPosition = GetRandomPointOnRectangleEdge();
+                break;
+            case ShapeType.Custom:
+                break;
+        }
+
+        successZone.localPosition = newPosition;
+        Debug.Log("Success Zone moved to: " + newPosition); // Debugging output
+
+        // Make successZone face the center
+        FaceSuccessZoneToCenter();
+    }
+
+    private Vector2 GetRandomPointOnCircle()
+    {
+        float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
+        float x = Mathf.Cos(angle) * (skillCheckArea.rect.width / 2);
+        float y = Mathf.Sin(angle) * (skillCheckArea.rect.height / 2);
+        return new Vector2(x, y);
+    }
+
+    private Vector2 GetRandomPointOnOval()
+    {
+        float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
+        float x = Mathf.Cos(angle) * (skillCheckArea.rect.width / 2);
+        float y = Mathf.Sin(angle) * (skillCheckArea.rect.height / 4);
+        return new Vector2(x, y);
+    }
+
+    private Vector2 GetRandomPointOnRectangleEdge()
+    {
+        int edge = Random.Range(0, 4); // 0 = top, 1 = right, 2 = bottom, 3 = left
+        float width = skillCheckArea.rect.width / 2;
+        float height = skillCheckArea.rect.height / 2;
+
+        switch (edge)
+        {
+            case 0: return new Vector2(Random.Range(-width, width), height); // Top edge
+            case 1: return new Vector2(width, Random.Range(-height, height)); // Right edge
+            case 2: return new Vector2(Random.Range(-width, width), -height); // Bottom edge
+            case 3: return new Vector2(-width, Random.Range(-height, height)); // Left edge
+            default: return Vector2.zero;
+        }
+    }
+
+
+
+
 
     private void CheckSkill()
     {
@@ -102,7 +212,28 @@ public class Script_MiniGame_SkillCheck : MonoBehaviour
         }
         else
         {
+            Debug.LogWarning("Back to the hook you go");
             onFail?.Invoke(); // Trigger failure callback if the indicator is outside the success zone.
         }
     }
+
+
+    private void FaceCenter()
+    {
+        Vector2 centerPosition = skillCheckArea.position; // Get the center position of the skill check
+        Vector2 indicatorPosition = movingIndicator.position; // Get the current position of the Indicator
+
+        Vector2 direction = centerPosition - indicatorPosition; // Calculate the direction to the center
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; // Convert to an angle in degrees
+
+        movingIndicator.rotation = Quaternion.Euler(0, 0, angle + 90); // Apply rotation (adjusted for correct orientation)
+    }
+
+    private void FaceSuccessZoneToCenter()
+    {
+        Vector2 directionToCenter = -successZone.localPosition.normalized; // Get direction toward the center
+        float angle = Mathf.Atan2(directionToCenter.y, directionToCenter.x) * Mathf.Rad2Deg; // Convert to angle
+        successZone.localEulerAngles = new Vector3(0, 0, angle); // Apply rotation in 2D UI space
+    }
+
 }
