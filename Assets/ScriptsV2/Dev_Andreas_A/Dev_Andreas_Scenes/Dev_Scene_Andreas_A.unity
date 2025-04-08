@@ -328,7 +328,7 @@ MonoBehaviour:
   indicatorSpeed: 100
   isClockwise: 1
   faceCenter: 1
-  skillCheckShape: 0
+  skillCheckShape: 2
   onSuccess:
     m_PersistentCalls:
       m_Calls: []
