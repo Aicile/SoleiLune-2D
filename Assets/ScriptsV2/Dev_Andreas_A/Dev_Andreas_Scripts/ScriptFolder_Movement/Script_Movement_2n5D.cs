@@ -68,14 +68,14 @@ public class Script_Movement_2n5D : MonoBehaviour
         Vector3 desiredVelocity = inputDir * targetSpeed;
 
         currentVelocity = Vector3.Lerp(currentVelocity, desiredVelocity, Time.deltaTime * inertia);
-        rb.velocity = new Vector3(currentVelocity.x, rb.velocity.y, currentVelocity.z);
+        rb.linearVelocity = new Vector3(currentVelocity.x, rb.linearVelocity.y, currentVelocity.z);
     }
 
     void HandleJump()
     {
         if (Input.GetKeyDown(KeyCode.R) && isGrounded)
         {
-            rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
         }
     }
 
@@ -99,7 +99,7 @@ public class Script_Movement_2n5D : MonoBehaviour
 
         while (timer < dodgeTime)
         {
-            rb.velocity = new Vector3(dodgeDir.x * dodgeSpeed, 0f, dodgeDir.z * dodgeSpeed);
+            rb.linearVelocity = new Vector3(dodgeDir.x * dodgeSpeed, 0f, dodgeDir.z * dodgeSpeed);
             timer += Time.deltaTime;
             yield return null;
         }

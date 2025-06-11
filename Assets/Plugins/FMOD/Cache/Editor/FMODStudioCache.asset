@@ -39,10 +39,8 @@ MonoBehaviour:
   Path: FMOD Music/Desktop/Ambience.bank
   Name: Ambience
   StudioPath: bank:/Ambience
-  lastModified: 638527584900000000
-  FileSizes:
-  - Name: Desktop
-    Value: 14209536
+  lastModified: 638766424179017646
+  FileSizes: []
   Exists: 1
 --- !u!114 &-8632934240628284089
 MonoBehaviour:
@@ -59,10 +57,8 @@ MonoBehaviour:
   Path: FMOD Music/Desktop/Dialog.bank
   Name: Dialog
   StudioPath: bank:/Dialog
-  lastModified: 638527584900000000
-  FileSizes:
-  - Name: Desktop
-    Value: 1782
+  lastModified: 638766424179032747
+  FileSizes: []
   Exists: 1
 --- !u!114 &-8624629186097171852
 MonoBehaviour:
@@ -159,10 +155,8 @@ MonoBehaviour:
   Path: FMOD Music/Desktop/ForagingFX.bank
   Name: ForagingFX
   StudioPath: bank:/ForagingFX
-  lastModified: 638527584900000000
-  FileSizes:
-  - Name: Desktop
-    Value: 391904
+  lastModified: 638766424179062967
+  FileSizes: []
   Exists: 1
 --- !u!114 &-7046062692061205924
 MonoBehaviour:
@@ -333,10 +327,8 @@ MonoBehaviour:
   Path: FMOD Music/Desktop/MC.bank
   Name: MC
   StudioPath: bank:/MC
-  lastModified: 638527584920000000
-  FileSizes:
-  - Name: Desktop
-    Value: 214304
+  lastModified: 638766424179078035
+  FileSizes: []
   Exists: 1
 --- !u!114 &-5993774417272757982
 MonoBehaviour:
@@ -671,10 +663,8 @@ MonoBehaviour:
   Path: FMOD Music/Desktop/TownFX.bank
   Name: TownFX
   StudioPath: bank:/TownFX
-  lastModified: 638527585020000000
-  FileSizes:
-  - Name: Desktop
-    Value: 146464
+  lastModified: 638766424180576804
+  FileSizes: []
   Exists: 1
 --- !u!114 &-2267293657019594645
 MonoBehaviour:
@@ -971,7 +961,7 @@ MonoBehaviour:
   - {fileID: 3714512323726622100}
   StringsBanks:
   - {fileID: 36498087985414067}
-  cacheTime: 638527585020000000
+  cacheTime: 638766424180591971
   cacheVersion: 131616
 --- !u!114 &36498087985414067
 MonoBehaviour:
@@ -988,9 +978,9 @@ MonoBehaviour:
   Path: FMOD Music/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638527584900000000
+  lastModified: 638766424180576804
   FileSizes:
-  - Name: Desktop
+  - Name: 
     Value: 3406
   Exists: 1
 --- !u!114 &485951136490486456
@@ -1321,10 +1311,8 @@ MonoBehaviour:
   Path: FMOD Music/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638527584900000000
-  FileSizes:
-  - Name: Desktop
-    Value: 3118
+  lastModified: 638766424180576804
+  FileSizes: []
   Exists: 1
 --- !u!114 &3884533924423293984
 MonoBehaviour:
@@ -1639,10 +1627,8 @@ MonoBehaviour:
   Path: FMOD Music/Desktop/CafeFX.bank
   Name: CafeFX
   StudioPath: bank:/CafeFX
-  lastModified: 638527584900000000
-  FileSizes:
-  - Name: Desktop
-    Value: 157280
+  lastModified: 638766424179032747
+  FileSizes: []
   Exists: 1
 --- !u!114 &7616979430323353805
 MonoBehaviour:
@@ -1770,10 +1756,8 @@ MonoBehaviour:
   Path: FMOD Music/Desktop/UI.bank
   Name: UI
   StudioPath: bank:/UI
-  lastModified: 638527585020000000
-  FileSizes:
-  - Name: Desktop
-    Value: 11072
+  lastModified: 638766424180591971
+  FileSizes: []
   Exists: 1
 --- !u!114 &8232770632248385026
 MonoBehaviour:
@@ -1790,10 +1774,8 @@ MonoBehaviour:
   Path: FMOD Music/Desktop/MX.bank
   Name: MX
   StudioPath: bank:/MX
-  lastModified: 638527585020000000
-  FileSizes:
-  - Name: Desktop
-    Value: 27482368
+  lastModified: 638766424180561665
+  FileSizes: []
   Exists: 1
 --- !u!114 &8463469518578862524
 MonoBehaviour:
@@ -1914,10 +1896,8 @@ MonoBehaviour:
   Path: FMOD Music/Desktop/BrewingFX.bank
   Name: BrewingFX
   StudioPath: bank:/BrewingFX
-  lastModified: 638527584900000000
-  FileSizes:
-  - Name: Desktop
-    Value: 494
+  lastModified: 638766424179017646
+  FileSizes: []
   Exists: 1
 --- !u!114 &9050709148774747585
 MonoBehaviour:

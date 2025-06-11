@@ -112,7 +112,7 @@ public class Script_Movement2D : MonoBehaviour
         // Handle dodge rolling
         if (isDodging)
         {
-            rb.velocity = dodgeDirection * dodgeSpeed;
+            rb.linearVelocity = dodgeDirection * dodgeSpeed;
 
             // Check if dodge duration is over
             if (Time.time >= dodgeEndTime)
@@ -132,7 +132,7 @@ public class Script_Movement2D : MonoBehaviour
         );
 
         // Apply velocity to Rigidbody2D
-        rb.velocity = currentVelocity;
+        rb.linearVelocity = currentVelocity;
 
         // Simulate vertical jump motion (purely visual). It will instead be a boolean check to allow us to jump over or not. Please come with other examples or suggestions!
         // SO i just realized that this does not even move the sprite, it moved the rigid body on the z axis. So it does not work. Yet. The jumping is still working how ever.

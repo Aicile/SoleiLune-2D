@@ -1,0 +1,7 @@
+{
+  "notes": [
+    { "lane": 0, "inputKeyRaw": "A", "holdDuration": 0, "spawnDelay": 1.0 },
+    { "lane": 1, "inputKeyRaw": "S", "holdDuration": 0, "spawnDelay": 2.5 },
+    { "lane": 2, "inputKeyRaw": "D", "holdDuration": 2.0, "spawnDelay": 3.0 }
+  ]
+}
