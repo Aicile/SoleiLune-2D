@@ -1,3 +1,4 @@
+// Script_Movement2D.cs
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,101 +6,97 @@ using UnityEngine;
 public class Script_Movement2D : MonoBehaviour
 {
     [Header("Movement Settings")]
-    public float moveSpeed = 5f;          // Maximum movement speed
-    public float acceleration = 10f;      // Speed of acceleration toward input direction
-    public float deceleration = 15f;      // Speed of deceleration when input is released
+    public float moveSpeed = 5f;              // Base movement speed
+    public float acceleration = 10f;          // Acceleration rate toward desired velocity
+    public float deceleration = 15f;          // Deceleration rate when no input is given
 
     [Header("Jump Settings")]
-    public float jumpForce = 5f;          // Initial upward velocity of a jump
-    public float gravity = 9.8f;          // Gravity applied during jump
-    public bool isJumping = false;        // True if player is currently jumping
-
-    [Tooltip("Height offset used to visually raise/lower the player sprite or shadow while jumping.")]
-    public float jumpHeightOffset;        // Simulated Z-position offset for visuals
+    public float jumpForce = 5f;              // Jump impulse strength
+    public float gravity = 9.8f;              // Gravity affecting vertical movement
+    public bool isJumping = false;            // Is the player currently jumping?
+    public float jumpHeightOffset;            // Visual offset to simulate vertical height
 
     [Header("Directional Movement Locks")]
-    public bool canMoveUp = true;         // Allow movement upward (W key)
-    public bool canMoveDown = true;       // Allow movement downward (S key)
-    public bool canMoveLeft = true;       // Allow movement leftward (A key)
-    public bool canMoveRight = true;      // Allow movement rightward (D key)
+    public bool canMoveUp = true;             // Lock for upward movement (W key)
+    public bool canMoveDown = true;           // Lock for downward movement (S key)
+    public bool canMoveLeft = true;           // Lock for leftward movement (A key)
+    public bool canMoveRight = true;          // Lock for rightward movement (D key)
 
     [Header("Scene Movement Control")]
-    public bool isMovementAllowed = true; // Global toggle for player movement based on scene or logic
+    public bool isMovementAllowed = true;     // Global toggle for movement allowance
 
     [Header("Dodge Roll Settings")]
-    public float dodgeSpeed = 8f;             // Speed during dodge
-    public float dodgeDuration = 0.3f;        // How long the dodge lasts
-    public float dodgeCooldown = 1f;          // Time before next dodge allowed
-    public KeyCode dodgeKey = KeyCode.LeftShift;
+    public float dodgeSpeed = 8f;             // Speed during a dodge
+    public float dodgeDuration = 0.3f;        // Duration of dodge roll
+    public float dodgeCooldown = 1f;          // Time before dodge is usable again
+    public KeyCode dodgeKey = KeyCode.LeftShift; // Input key for dodge
 
     [Header("Animation")]
-    public Animator animator;            // Reference to the Animator component for character animations
+    public Animator animator;                 // Animator reference for visual feedback
 
     // Internal state tracking
-    private Vector2 moveInput;            // Raw input direction from keyboard
-    private Vector2 currentVelocity;      // Smoothed velocity applying inertia
-    private float verticalVelocity = 0f;  // Current simulated vertical velocity for jumping
-    private bool facingRight = true;      // True if player is facing right
+    private Vector2 moveInput;                // Raw directional input from player
+    private Vector2 currentVelocity;          // Current interpolated velocity
+    private float verticalVelocity = 0f;      // Velocity used for visual jump arc
+    private bool facingRight = true;          // Player's current facing direction
 
-    private bool isDodging = false;           // True if player is currently dodging
-    private bool isInvincible = false;        // I-frames during dodge
-    private Vector2 dodgeDirection;           // Movement direction when dodge started
-    private float dodgeEndTime = 0f;          // When current dodge ends
-    private float nextDodgeTime = 0f;         // When next dodge is allowed
+    private bool isDodging = false;           // Is the player currently dodging?
+    private bool isInvincible = false;        // Invulnerability flag during dodge
+    private Vector2 dodgeDirection;           // Direction dodge was initiated in
+    private float dodgeEndTime = 0f;          // Time when current dodge ends
+    private float nextDodgeTime = 0f;         // Next time dodge can be used
 
-    private Rigidbody2D rb;               // Reference to the Rigidbody2D component
+    private Rigidbody2D rb;                   // Reference to Rigidbody2D component
+
+    // Hazard modifiers
+    private float speedModifier = 1f;         // Multiplier for movement speed (e.g., mud)
+    private bool onIce = false;               // Is the player currently on ice?
+    private float iceMaxSpeed;                // Max speed allowed while on ice
+    private float iceAcceleration;            // Acceleration while on ice
+    private float iceDeceleration;            // Deceleration while on ice
 
     void Start()
     {
-        // Cache Rigidbody2D component
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();     // Cache Rigidbody2D
     }
 
     void Update()
     {
-        // Skip input if movement is globally disallowed
+        // Prevent input when movement is disallowed
         if (!isMovementAllowed)
         {
             moveInput = Vector2.zero;
             return;
         }
 
-        // Get directional input while respecting locked directions
+        // Collect directional input while honoring directional locks
         float moveX = 0f;
         float moveY = 0f;
 
-        if (Input.GetKey(KeyCode.W) && canMoveUp)
-            moveY = 1;
-        if (Input.GetKey(KeyCode.S) && canMoveDown)
-            moveY = -1;
-        if (Input.GetKey(KeyCode.A) && canMoveLeft)
-            moveX = -1;
-        if (Input.GetKey(KeyCode.D) && canMoveRight)
-            moveX = 1;
+        if (Input.GetKey(KeyCode.W) && canMoveUp) moveY = 1;
+        if (Input.GetKey(KeyCode.S) && canMoveDown) moveY = -1;
+        if (Input.GetKey(KeyCode.A) && canMoveLeft) moveX = -1;
+        if (Input.GetKey(KeyCode.D) && canMoveRight) moveX = 1;
 
-        // Normalize input so diagonal movement is not faster
-        moveInput = new Vector2(moveX, moveY).normalized;
+        moveInput = new Vector2(moveX, moveY).normalized; // Normalize to prevent diagonal speed boost
 
-        // Check for jump input (space bar)
+        // Handle jumping
         if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
         {
             isJumping = true;
             verticalVelocity = jumpForce;
         }
 
-        // Dodge roll input
+        // Handle dodge roll input
         if (Input.GetKeyDown(dodgeKey) && !isDodging && Time.time >= nextDodgeTime && moveInput != Vector2.zero)
         {
             StartDodge();
         }
 
-
-
-
-        //Animation Input & Flipper
-
+        // Animation updates
         animator.SetFloat("Speed", moveInput.sqrMagnitude);
 
+        // Flip character based on horizontal direction
         if ((moveInput.x < 0 && facingRight) || (moveInput.x > 0 && !facingRight))
         {
             Flip();
@@ -108,78 +105,70 @@ public class Script_Movement2D : MonoBehaviour
 
     void FixedUpdate()
     {
-
-        // Handle dodge rolling
+        // Handle dodge movement
         if (isDodging)
         {
             rb.linearVelocity = dodgeDirection * dodgeSpeed;
-
-            // Check if dodge duration is over
             if (Time.time >= dodgeEndTime)
             {
                 EndDodge();
             }
-
-            return; // Skip rest of movement while dodging
+            return; // Skip normal movement while dodging
         }
 
+        // Adjust speed and acceleration based on hazard effects
+        float targetSpeed = moveSpeed * speedModifier;
+        float usedAcceleration = onIce ? iceAcceleration : acceleration;
+        float usedDeceleration = onIce ? iceDeceleration : deceleration;
 
-        // Apply acceleration or deceleration to movement
+        // Smooth velocity toward input direction
         currentVelocity = Vector2.MoveTowards(
             currentVelocity,
-            moveInput * moveSpeed,
-            (moveInput != Vector2.zero ? acceleration : deceleration) * Time.fixedDeltaTime
+            moveInput * targetSpeed,
+            (moveInput != Vector2.zero ? usedAcceleration : usedDeceleration) * Time.fixedDeltaTime
         );
 
-        // Apply velocity to Rigidbody2D
-        rb.linearVelocity = currentVelocity;
+        // Clamp speed if on ice
+        if (onIce && currentVelocity.magnitude > iceMaxSpeed)
+        {
+            currentVelocity = currentVelocity.normalized * iceMaxSpeed;
+        }
 
-        // Simulate vertical jump motion (purely visual). It will instead be a boolean check to allow us to jump over or not. Please come with other examples or suggestions!
-        // SO i just realized that this does not even move the sprite, it moved the rigid body on the z axis. So it does not work. Yet. The jumping is still working how ever.
+        rb.linearVelocity = currentVelocity; // Apply velocity to rigidbody
+
+        // Simulate jump arc (visual only)
         if (isJumping)
         {
             verticalVelocity -= gravity * Time.fixedDeltaTime;
             jumpHeightOffset += verticalVelocity * Time.fixedDeltaTime;
 
-            // Stop jumping once we've hit the ground
             if (jumpHeightOffset <= 0f)
             {
                 jumpHeightOffset = 0f;
                 verticalVelocity = 0f;
                 isJumping = false;
             }
-
-
         }
-        // Animation for moving. Ensuring it plays the movement animation while also walking up and down. 
+
+        // Update directional animation parameters
         animator.SetFloat("Horizontal", moveInput.x);
         animator.SetFloat("Vertical", moveInput.y);
-
     }
 
-    public void CheckSceneMovementAllowance()
-    {
-        Debug.Log("Checking if movement is actually allowed...");
-        // Example of dooing this could be: Check if current scene is within a list of allowed movement scenes. Or use triggers.
-    }
-
-    private void StartDodge()
+    private void StartDodge() // Start the dodge roll mechanic and set invincibility frames
     {
         isDodging = true;
         isInvincible = true;
-        dodgeDirection = moveInput;                   // Lock in current direction
+        dodgeDirection = moveInput; // Use current input direction for dodge is what this means
         dodgeEndTime = Time.time + dodgeDuration;
         nextDodgeTime = Time.time + dodgeCooldown;
-
-        // Optional: Trigger animation or sound effect here
         Debug.Log("Dodge started: I-frames ON");
     }
 
-    private void EndDodge()
+    private void EndDodge() // End the dodge roll and reset invincibility
     {
         isDodging = false;
         isInvincible = false;
-
         Debug.Log("Dodge ended: I-frames OFF");
     }
 
@@ -188,16 +177,64 @@ public class Script_Movement2D : MonoBehaviour
         return isInvincible;
     }
 
-
-    void Flip() // Flips the character sprite. For quality we could consider animating it diffrent based on which direction its facing. Just a suggestion.
+    void Flip()
     {
-        facingRight = !facingRight; 
+        facingRight = !facingRight;
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
     }
 
+    // ===== Hazard Method Hooks =====
 
+    // Applies an external force (used for wind hazard)
+    public void ApplyExternalForce(Vector2 force)
+    {
+        rb.AddForce(force, ForceMode2D.Force);
+    }
 
+    // Modifies speed multiplier (used by mud/quicksand)
+    public void SetSpeedModifier(float multiplier)
+    {
+        speedModifier = multiplier;
+    }
 
+    // Resets movement speed multiplier to default
+    public void ResetSpeedModifier()
+    {
+        speedModifier = 1f;
+    }
+
+    // Enables inertia-style physics for ice
+    public void EnableIcePhysics(float maxSpeed, float accel, float decel)
+    {
+        onIce = true;
+        iceMaxSpeed = maxSpeed;
+        iceAcceleration = accel;
+        iceDeceleration = decel;
+    }
+
+    // Disables ice physics effects
+    public void DisableIcePhysics()
+    {
+        onIce = false;
+    }
+
+    // Simulates vertical sinking (used for quicksand)
+    public void ApplyQuicksandSink(float amount)
+    {
+        transform.position = new Vector3(transform.position.x, transform.position.y - amount, transform.position.z);
+    }
+
+    // Called when player exits quicksand (placeholder)
+    public void ExitQuicksand()
+    {
+        // Future visuals reset could go here
+    }
+
+    // Used for external systems to determine if movement should be allowed
+    public void CheckSceneMovementAllowance()
+    {
+        Debug.Log("Checking if movement is actually allowed...");
+    }
 }
