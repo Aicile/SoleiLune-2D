@@ -45,7 +45,7 @@ public class Script_NPCRoutineEditor : Editor
             // Create 3 new waypoints and place them beside the NPC
             for (int i = 0; i < 3; i++)
             {
-                GameObject newPoint = new GameObject($"Waypoint_{i + 1}");
+                GameObject newPoint = new GameObject($"{npcRoutine.name} Waypoint_{ i + 1}");
                 newPoint.transform.position = npcRoutine.transform.position + Vector3.right * i * 2f;
                 newPoint.transform.SetParent(npcSubContainer);
 
