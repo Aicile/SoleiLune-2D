@@ -236,4 +236,8 @@ public class Script_MiniGame_SkillCheck : MonoBehaviour
         successZone.localEulerAngles = new Vector3(0, 0, angle); // Apply rotation in 2D UI space
     }
 
+    public void OnDestroy()
+    {
+        Destroy(gameObject);
+    }
 }
